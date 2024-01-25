@@ -7,10 +7,23 @@ if (isset($_GET['token'])) {
 
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en" dir="ltr">
 
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Verification</title>
+    <link rel="icon" href="https://pixelwibes.com/template/my-task/html/dist/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <!-- project css file  -->
+    <link rel="stylesheet" href="controller\compte\__ My-Task__ Two Step_files/my-task.style.min.css">
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verification</title>
@@ -19,16 +32,16 @@ if (isset($_GET['token'])) {
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
-<body onload="reload()">
-    <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <div class="col" id='col'>
+<body onload="reload()" data-mytask="theme-indigo" id='col'>
+    <!-- <div class="container"> -->
+        <!-- <div class="card o-hidden border-0 shadow-lg my-5"> -->
+            <!-- <div class="card-body p-0"> -->
+                <!-- <div class="col" id='col'> -->
                     
-                </div>
-            </div>
-        </div>
-    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div>  -->
 
 
     <script src="vendor/jquery/jquery.min.js"></script>

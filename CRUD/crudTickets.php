@@ -99,6 +99,12 @@ LEFT JOIN
         $stmt = $this->pdo->query($req);
         return $stmt->fetch();
     }
+    public function getTicketTotal()
+    {
+        $req = "SELECT count(*) FROM ticket";
+        $stmt = $this->pdo->query($req);
+        return $stmt->fetch();
+    }
     public function getByStatut($statut)
     {
         $req = "SELECT * FROM ticket WHERE status='{$statut}';";
