@@ -4,6 +4,9 @@ if (isset($_GET['id'])) {
 } else {
   header("location:profile.php?id=".$_SESSION['id']);
 }
+if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
+  header("location:profile.php?id=" . $_SESSION['id']);
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">

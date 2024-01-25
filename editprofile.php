@@ -1,15 +1,16 @@
 <?php
 session_start();
-
-if($_SESSION['type']=="client"){
-  header("location:editprofile.php?id=" . $_SESSION['id']);
-}
-
+$type = "client";
 
 if (!isset($_GET['id'])) {
+  if($type == "client"){
+    header("location:profile.php?id=" . $_SESSION['id']);
+  }
+  header("location:profile.php?id=" . $_SESSION['id']);
+}
+if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
   header("location:editprofile.php?id=" . $_SESSION['id']);
 }
-
 ?>
 
 
@@ -537,7 +538,15 @@ if (!isset($_GET['id'])) {
       xhttp.onload = function() {
         document.getElementById("edit-form").innerHTML = this.responseText;
       }
-      xhttp.open("GET", "controller/compte/editprofile.php?id=<?php echo $_GET['id']; ?>", true);
+      <?php
+      if($_SESSION['type'] == "client"){
+        echo 'xhttp.open("GET", "controller/compte/editprofile.php?id=' . $_GET["id"] . '", true);';
+      
+      }else{
+        echo 'xhttp.open("GET", "controller/compte/editprofile.php?id=' . $_GET["id"] . '", true);';
+      }
+      
+      ?>
       xhttp.send();
     }
   </script>
