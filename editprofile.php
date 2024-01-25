@@ -1,6 +1,5 @@
 <?php
 session_start();
-$type = "client";
 
 if (!isset($_GET['id'])) {
   if($type == "client"){

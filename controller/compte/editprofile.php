@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-
-
-
-if((!isset($_GET["id"]))){
+if((!isset($_GET["id"]))&&($_SESSION['type']=="client")){
     header("location:editprofile.php?id=" . $_SESSION['id']);
 }
 if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
