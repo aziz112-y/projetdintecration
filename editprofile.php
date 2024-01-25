@@ -78,7 +78,7 @@ if (!isset($_GET['id'])) {
                 <a class="ms-link" href="tickets.php?status=enCours"><span>En Cours</span></a>
               </li>
               <li>
-                <a class="ms-link" href="tickets.php?status=Cloture"><span>Complété</span></a>
+                <a class="ms-link" href="tickets.php?status=Cloture"><span>Completé</span></a>
               </li>
             </ul>
           </li>
@@ -357,7 +357,7 @@ if (!isset($_GET['id'])) {
 
       <div class="card mb-3">
         <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-          <h6 class="mb-0 fw-bold ">Modifier Votre Profile</h6>
+          <h6 class="mb-0 fw-bold ">Modifier  Profile</h6>
         </div>
         <div class="card-body">
           <form id="edit-form" method="post" action="controller/compte/editprofile.php?id=<?php echo $_GET["id"] ?>">
