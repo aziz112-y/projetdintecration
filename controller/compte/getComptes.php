@@ -21,7 +21,7 @@ foreach ($comptes as $compte) {
                         <h6 class="mb-0 fw-bold d-block fs-6 mt-2"><?php echo $compte[5]; ?></h6>
                         <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
                             <a href="editprofile.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button></a>
-                            <a href="supprimer.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button></a>
+                            <a href="controller/compte/supprimer.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button></a>
 
                         </div>
                     </div>
