@@ -113,10 +113,6 @@ if (isset($_SESSION["email"])) {
                     <a class="ms-link" href="verifier.php">
                       <span>Verifier Comptes</span></a>
                   </li>
-                  <li>
-                    <a class="ms-link" href="supprimer.php">
-                      <span>Supprimer Comptes</span></a>
-                  </li>
                 </ul>
               </li>';
           }
@@ -353,7 +349,7 @@ if (isset($_SESSION["email"])) {
 
       <div class="card mb-3">
         <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-          <h6 class="mb-0 fw-bold ">Basic Form</h6>
+          <h6 class="mb-0 fw-bold ">Ajouter Compte</h6>
         </div>
         <div class="card-body">
         <form class="profile-form" method="post" action="/controller/compte/register.php">
@@ -366,11 +362,11 @@ if (isset($_SESSION["email"])) {
 
 									<div class="mb-3 d-flex justify-content-center">
 										<div class="form-check form-check-inline mx-2">
-											<input class="form-check-input" type="radio" name="userType" id="adminRadio" value="admin">
+											<input class="form-check-input" type="radio" name="userType" id="adminRadio" value="admin" checked>
 											<label class="form-check-label" for="adminRadio">Admin</label>
 										</div>
 										<div class="form-check form-check-inline mx-2">
-											<input class="form-check-input" type="radio" name="userType" id="clientRadio" value="client" checked>
+											<input class="form-check-input" type="radio" name="userType" id="clientRadio" value="client" >
 											<label class="form-check-label" for="clientRadio">Client</label>
 										</div>
 									</div>

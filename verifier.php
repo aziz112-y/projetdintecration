@@ -256,10 +256,7 @@ if (isset($_SESSION["email"])) {
                 <a class="ms-link" href="verifier.php">
                   <span>Verifier Comptes</span></a>
               </li>
-              <li>
-                <a class="ms-link" href="supprimer.php">
-                  <span>Supprimer Comptes</span></a>
-              </li>
+
             </ul>
           </li>
         </ul>

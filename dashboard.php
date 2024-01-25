@@ -113,10 +113,7 @@ if (isset($_SESSION["email"])) {
                     <a class="ms-link" href="verifier.php">
                       <span>Verifier Comptes</span></a>
                   </li>
-                  <li>
-                    <a class="ms-link" href="supprimer.php">
-                      <span>Supprimer Comptes</span></a>
-                  </li>
+
                 </ul>
               </li>';
           }
@@ -300,7 +297,7 @@ if (isset($_SESSION["email"])) {
                           <small class=""><?php echo $_SESSION["email"]; ?></small>
                         </div>
                       </div>
-                      <div class="text-center"> <a href="editprofile.php"><BUtton class="btn btn-primary"><i class="icofont-ui-edit"></i></BUtton></a> <a href="profile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-eye-open"></i></BUtton> </a></div>
+                      <div class="text-center"> <a href="editprofile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-ui-edit"></i></BUtton></a> <a href="profile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-eye-open"></i></BUtton> </a></div>
 
                       <div>
                         <hr class="dropdown-divider border-dark" />

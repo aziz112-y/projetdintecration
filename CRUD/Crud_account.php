@@ -124,9 +124,9 @@ class CRUD
         $res = $this->pdo->query($sql);
         return $res->fetch(PDO::FETCH_NUM)[0];
     }
-    function Supprimeraccount($email)
+    function Supprimeraccount($id)
     {
-        $sql = "delete from account where email=$email;";
+        $sql = "delete from account where id=$id;";
         $res = $this->pdo->exec($sql);
         return $res;
     }

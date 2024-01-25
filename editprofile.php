@@ -117,10 +117,6 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
                     <a class="ms-link" href="verifier.php">
                       <span>Verifier Comptes</span></a>
                   </li>
-                  <li>
-                    <a class="ms-link" href="supprimer.php">
-                      <span>Supprimer Comptes</span></a>
-                  </li>
                 </ul>
               </li>';
           }
