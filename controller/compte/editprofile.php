@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_GET["id"])){
+if((!isset($_GET["id"]))){
     header("location:editprofile.php?id=" . $_SESSION['id']);
 }
 require_once '../../crud/Crud_account.php';
