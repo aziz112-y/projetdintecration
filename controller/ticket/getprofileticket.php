@@ -7,15 +7,15 @@ $acc = new CRUD();
 $crud = new CrudTicket();
 $email = $acc->getEmail($_GET["id"]);
 $table = $crud->getTicketByContact($email);
+echo "<script>console.log('Debug Objects: " .json_encode($table) . "' );</script>";
+
 ?>
 <thead>
     <tr>
         <th>Numéro de ticket</th>
         <th>Date&Heure</th>
         <th>Demande</th>
-
         <th>Diagnostic</th>
-
         <th>Categorie</th>
         <th>Statut</th>
         <?php

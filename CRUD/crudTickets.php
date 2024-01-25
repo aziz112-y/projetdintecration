@@ -164,7 +164,7 @@ LEFT JOIN
     JOIN 
         societe s ON s.id = a.centre
     LEFT JOIN
-        cloture c ON c.ticket_id = t.ticketId;
+        cloture c ON c.ticket_id = t.ticketId
  where t.contact='{$contact}'
  order by t.DateHeure 
  

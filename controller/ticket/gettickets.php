@@ -5,6 +5,8 @@ require_once "../../crud/crudTickets.php";
 $crud = new CrudTicket();
 if ($_SESSION["type"] == "client") {
   $table = $crud->getTicketByContact($_SESSION["email"]);
+
+  echo "<script>console.log('Debug Objects: " . $table . "' );</script>";
 } else {
   $table = $crud->getTickets();
   $encour = $crud->getByStatutNum("enCours");
