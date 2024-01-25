@@ -7,7 +7,6 @@ $acc = new CRUD();
 $crud = new CrudTicket();
 $email = $acc->getEmail($_GET["id"]);
 $table = $crud->getTicketByContact($email);
-echo "<script>console.log('Debug Objects: " .json_encode($table) . "' );</script>";
 
 ?>
 <thead>
