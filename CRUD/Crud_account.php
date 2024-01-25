@@ -156,4 +156,24 @@ class CRUD
 
         return $res;
     }
+    function getTopAdmin(){
+        $sql = "SELECT a.nom, a.prenom, a.gender, a.type, a.email, COUNT(c.cloture_id) AS cloture_count FROM account a JOIN cloture c ON c.cloture_par = a.email WHERE a.type = 'admin' AND a.status = 'Verifie' GROUP BY a.nom, a.prenom, a.gender, a.type, a.email ORDER BY cloture_count DESC LIMIT 5;";
+        $res = $this->pdo->query($sql);
+        return $res->fetch(PDO::FETCH_NUM);
+    }
+    function getMale(){
+        $req = "select count(*) from account where gender = 'male' and type ='admin';";
+        $stmt = $this->pdo->query($req);    
+        return $stmt->fetch()[0];
+    }
+    function getFemale(){
+        $req = "select count(*) from account where gender = 'female' and type ='admin';";
+        $stmt = $this->pdo->query($req);    
+        return $stmt->fetch()[0];
+    }
+    function getTotalAdmin(){
+        $req = "select count(*) from account where type = 'admin';";
+        $stmt = $this->pdo->query($req);    
+        return $stmt->fetch()[0];
+    }
 }

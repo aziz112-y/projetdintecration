@@ -178,4 +178,17 @@ function supprimer($id){
     $req = "DELETE FROM ticket WHERE ticketId={$id}";
     $stmt = $this->pdo->exec($req);
     return $stmt;}
+    
+
+    function getTopTicket(){
+        $req = "select * from ticket order by DateHeure desc limit 5;";
+        $stmt = $this->pdo->query($req);
+        return $stmt->fetchAll(PDO::FETCH_NUM); 
+    }
+    
+    function getTotalTickets(){
+        $req = "SELECT count(ticketId) FROM ticket";
+        $stmt = $this->pdo->query($req);
+        return $stmt->fetch()[0];
+    }
 }
