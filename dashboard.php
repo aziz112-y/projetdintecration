@@ -912,6 +912,8 @@ if (isset($_SESSION["email"])) {
       );
       chart.render();
     });
+    male = (document.getElementById("male_data").innerHTML);
+    console.log(male);
     // Employees Data
     $(document).ready(function() {
         var options = {
@@ -931,7 +933,7 @@ if (isset($_SESSION["email"])) {
                 show: true,
             },
             colors: ['var(--chart-color4)', 'var(--chart-color3)'],
-            series: [<?php echo 1  ?>, 55],
+            series: [male, 55],
             responsive: [{
                 breakpoint: 480,
                 options: {
