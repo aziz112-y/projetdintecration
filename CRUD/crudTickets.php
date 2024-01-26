@@ -17,21 +17,21 @@ class CrudTicket
         $diagnostic = $ticket->getDiagnostique();
         $categorie = $ticket->getCategorie();
         $contact = $ticket->getContact();
-    
+
         $req = "INSERT INTO ticket (DateHeure, demande, Diagnostic, Categorie, Priorite, Status, contact) VALUES (NOW(), :demande, :diagnostic, :categorie, 'urgent', 'enCours', :contact)";
-        
+
         $stmt = $this->pdo->prepare($req);
-    
+
         $stmt->bindParam(':demande', $demande);
         $stmt->bindParam(':diagnostic', $diagnostic);
         $stmt->bindParam(':categorie', $categorie);
         $stmt->bindParam(':contact', $contact);
-    
+
         $stmt->execute();
-    
+
         return $stmt;
     }
-    
+
 
     public function getTickets()
     {
@@ -155,6 +155,12 @@ LEFT JOIN
         $stmt = $this->pdo->exec($req);
         return $stmt;
     }
+    public function getClotureStat()
+    {
+        $req = "SELECT SELECT count(cloture_id),DATE(dateheur) FROM cloture group by DATE(dateheur);";
+        $stmt = $this->pdo->query($req);
+        return $stmt->fetchAll(PDO::FETCH_NUM);
+    }
     public function getTicketByContact($contact)
     {
 
@@ -187,19 +193,23 @@ LEFT JOIN
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_NUM);
     }
-function supprimer($id){
-    $req = "DELETE FROM ticket WHERE ticketId={$id}";
-    $stmt = $this->pdo->exec($req);
-    return $stmt;}
-    
+    function supprimer($id)
+    {
+        $req = "DELETE FROM ticket WHERE ticketId={$id}";
+        $stmt = $this->pdo->exec($req);
+        return $stmt;
+    }
 
-    function getTopTicket(){
+
+    function getTopTicket()
+    {
         $req = "select * from ticket order by DateHeure desc limit 5;";
         $stmt = $this->pdo->query($req);
-        return $stmt->fetchAll(PDO::FETCH_NUM); 
+        return $stmt->fetchAll(PDO::FETCH_NUM);
     }
-    
-    function getTotalTickets(){
+
+    function getTotalTickets()
+    {
         $req = "SELECT count(ticketId) FROM ticket";
         $stmt = $this->pdo->query($req);
         return $stmt->fetch()[0];

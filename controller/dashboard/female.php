@@ -2,4 +2,4 @@
 
 require_once "dash.php";
 
-echo $male;
+echo $female;
