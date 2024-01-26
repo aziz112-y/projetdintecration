@@ -145,7 +145,7 @@ if (isset($_SESSION["email"])) {
                     <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="" />
                     <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
                     <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="" />
-                    <span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal" data-bs-target="#addUser"><i class="icofont-ui-add"></i></span>
+                    <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
                   </div>
                 </div>
               <?php
@@ -246,8 +246,8 @@ if (isset($_SESSION["email"])) {
                         </ul>
                       </div>
                     </div>
-                    <a class="card-footer text-center border-top-0" href="#">
-                      View all notifications</a>
+                      <a class="card-footer text-center border-top-0" href="tickets.php">
+                      Voir Tout les Reclamations</a>
                   </div>
                 </div>
               </div>

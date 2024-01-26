@@ -93,6 +93,13 @@ LEFT JOIN
         $result = $stmt->fetch();
         return $result;
     }
+    public function getTicketlimit5()
+    {
+        $req = "SELECT * FROM ticket Limit 5";
+        $stmt = $this->pdo->query($req);
+        $result = $stmt->fetch();
+        return $result;
+    }
     public function getTicketByCat($cat)
     {
         $req = "SELECT * FROM ticket WHERE reference={$cat}";

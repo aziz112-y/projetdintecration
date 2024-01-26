@@ -9,4 +9,6 @@ class connection
         $db = new PDO($dbname, $user, $pass);
         return $db;
     }
+    
+
 }
