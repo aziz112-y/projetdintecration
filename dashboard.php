@@ -810,15 +810,33 @@ if (isset($_SESSION["email"])) {
     }
 
     function loaddata() {
-      fetch('controller/dashboard/test.php')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+      return new Promise((resolve, reject) => {
+        fetch("controller/dashboard/cloturestat_data.php")
+          .then(response => response.text())
+          .then(data => {
+            chart_data = JSON.parse(data);
+            chart_data = chart_data.map(function(obj) {
+              return {
+                x: Number(obj.x),
+                y: obj.y
+              }
+            });
+            xValues = chart_data.map(function(obj) {
+              return obj.x;
+            });
+            yValues = chart_data.map(function(obj) {
+              return obj.y;
+            });
+            console.log(chart_data);
+            resolve(); // Resolve the promise once data is loaded
+          })
+          .catch(error => {
+            console.error('Error loading data:', error);
+            reject(error); // Reject the promise if an error occurs
+          });
+      });
     }
+
 
     function loadfemale() {
       return new Promise((resolve, reject) => {
@@ -860,13 +878,77 @@ if (isset($_SESSION["email"])) {
           return loadfemale();
         })
         .then(() => {
-          circleChart();
+          if (male == 0 && female == 0) {
+            document.getElementById("apex-MainCategories").innerHTML = "<h3 class='text-center'>Aucune donnée à afficher</h3>";
+          } else {
+            circleChart();
+          }
+
         })
         .catch((error) => {
           console.error('Error loading chart data:', error);
         });
     }
 
+    function loadchart2() {
+      loaddata()
+        .then(() => {
+          if (chart_data.length > 0) {
+            chart2();
+          } else {
+            document.getElementById("apex-emplyoeeAnalytics").innerHTML = "<h3 class='text-center'>Aucune donnée à afficher</h3>";
+          }
+        })
+        .catch((error) => {
+          console.error('Error loading chart data:', error);
+        });
+    }
+
+    function chart2() {
+      var options = {
+        series: [{
+          name: "Nombre de tickets complétés",
+          data: xValues
+        }],
+        chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            gradientToColors: ["var(--chart-color3)"],
+            shadeIntensity: 1,
+            type: "horizontal",
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100, 100, 100],
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        grid: {
+          row: {
+            colors: ['transparent'],
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: yValues,
+        }
+      };
+
+      var chart = new ApexCharts(document.querySelector("#apex-emplyoeeAnalytics"), options);
+      chart.render();
+    }
 
     function circleChart() {
       var options = {
@@ -906,93 +988,9 @@ if (isset($_SESSION["email"])) {
 
 
     // Employees Analytics
-    $(document).ready(function() {
-      var options = {
-        series: [{
-          name: "Available",
-          data: [4, 19, 7, 35, 14, 27, 9, 12],
-        }, ],
-        chart: {
-          height: 140,
-          type: "line",
-          toolbar: {
-            show: false,
-          },
-        },
-        grid: {
-          show: false,
-          xaxis: {
-            lines: {
-              show: false,
-            },
-          },
-          yaxis: {
-            lines: {
-              show: false,
-            },
-          },
-        },
-        stroke: {
-          width: 4,
-          curve: "smooth",
-          colors: ["var(--chart-color2)"],
-        },
-        xaxis: {
-          type: "datetime",
-          categories: [
-            "1/11/2021",
-            "2/11/2021",
-            "3/11/2021",
-            "4/11/2021",
-            "5/11/2021",
-            "6/11/2021",
-            "7/11/2021",
-            "8/11/2021",
-          ],
-          tickAmount: 10,
-          labels: {
-            formatter: function(value, timestamp, opts) {
-              return opts.dateFormatter(new Date(timestamp), "dd MMM");
-            },
-          },
-        },
-        fill: {
-          type: "gradient",
-          gradient: {
-            shade: "dark",
-            gradientToColors: ["var(--chart-color3)"],
-            shadeIntensity: 1,
-            type: "horizontal",
-            opacityFrom: 1,
-            opacityTo: 1,
-            stops: [0, 100, 100, 100],
-          },
-        },
-        markers: {
-          size: 3,
-          colors: ["#FFA41B"],
-          strokeColors: "#ffffff",
-          strokeWidth: 2,
-          hover: {
-            size: 7,
-          },
-        },
-        yaxis: {
-          show: false,
-          min: -10,
-          max: 50,
-        },
-      };
-
-      var chart = new ApexCharts(
-        document.querySelector("#apex-emplyoeeAnalytics"),
-        options
-      );
-      chart.render();
-    });
   </script>
   <script>
-    document.addEventListener("load", loadchart(), presence(), loadtotaltickets(), loaddata());
+    document.addEventListener("load", loadchart(), loadchart2(), presence(), loadtotaltickets());
   </script>
 </body>
 

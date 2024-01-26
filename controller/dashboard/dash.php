@@ -12,4 +12,4 @@ $top_ticket = $crud_ticket->getTopTicket();
 $male = $crud_compte->getMale();
 $female = $crud_compte->getFemale();
 $total_admin = $crud_compte->getTotalAdmin();
-$cloturestat = $crud_ticket->getClotureStat();
+$cloturestat_data = $crud_ticket->getClotureStat();

@@ -157,9 +157,10 @@ LEFT JOIN
     }
     public function getClotureStat()
     {
-        $req = "SELECT SELECT count(cloture_id),DATE(dateheur) FROM cloture group by DATE(dateheur);";
+        $req = "SELECT count(cloture_id) as x, DATE(dateheur) as y FROM cloture GROUP BY DATE(dateheur);";
         $stmt = $this->pdo->query($req);
-        return $stmt->fetchAll(PDO::FETCH_NUM);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return  $result;
     }
     public function getTicketByContact($contact)
     {
