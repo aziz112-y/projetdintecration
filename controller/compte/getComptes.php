@@ -1,4 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION["email"])) {
+  if ($_SESSION["type"] == "client") {
+    header("location:index.php");
+  }
+} else {
+  header("location:index.php");
+}
+?>
+<?php
 require_once '../../crud/Crud_account.php';
 $crud = new CRUD();
 if (isset($_GET['type'])) {
@@ -16,7 +26,13 @@ foreach ($comptes as $compte) {
         <div class="card teacher-card mr-1">
             <div class="card-body d-flex">
                 <div class="profile-av pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
-                    <img src="assets/images/lg/avatar5.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+            <?php
+                if($compte[8]=="male"){
+                    echo'<img src="assets/images/lg/avatar5.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">';
+                }else{
+                    echo'<img src="assets/images/lg/avatar2.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">';
+                }
+                ?>
                     <div class="about-info d-flex align-items-center mt-1 justify-content-center flex-column">
                         <h6 class="mb-0 fw-bold d-block fs-6 mt-2"><?php echo $compte[5]; ?></h6>
                         <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
