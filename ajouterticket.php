@@ -165,14 +165,14 @@ session_start();
                           ?> Profile</small>
                 </div>
                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.png" alt="profile" />
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                 </a>
 
                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                   <div class="card border-0 w280">
                     <div class="card-body pb-0">
                       <div class="d-flex py-1">
-                        <img class="avatar rounded-circle" src="assets/images/profile_av.png" alt="profile" />
+                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                         <div class="flex-fill ms-3">
                           <p class="mb-0">
                             <span class="font-weight-bold"><?php
@@ -242,9 +242,9 @@ session_start();
           <h6 class="mb-0 fw-bold ">Avez-vous un problème ? Nous sommes là pour vous aider !</h6>
         </div>
         <div class="card-body">
-        <?php
-          if("Verifie"){
-            echo'          <form id="basic-form" method="post" novalidate="" action="controller/ticket/addticket.php">
+          <?php
+          if ("Verifie") {
+            echo '          <form id="basic-form" method="post" novalidate="" action="controller/ticket/addticket.php">
             <div class="row g-3 align-items-center">
               <div class="col-md-12">
                 <div class="form-group">
@@ -270,15 +270,15 @@ session_start();
             </div>
             <button type="submit" class="btn btn-primary" name="envoyer" >Envoyer</button>
           </form>';
-          }else{
-            echo'<h1>Sorry Your account is not Activated Yet</h1>';
-          }             
-         ?>
+          } else {
+            echo '<h1>Sorry Your account is not Activated Yet</h1>';
+          }
+          ?>
         </div>
       </div>
     </div>
 
-   
+
   </div>
   </div>
 

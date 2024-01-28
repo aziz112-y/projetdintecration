@@ -1,4 +1,3 @@
-
 <?php
 require_once("../../crud/crud_account.php");
 require_once("../../crud/crud_societe.php");
@@ -14,7 +13,7 @@ if ($compte) {
     <div class="card-body d-flex teacher-fulldeatil">
         <div class="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
             <a href="#">
-                <img src="assets/images/lg/avatar3.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+                <img src="assets/profile/<?php echo $compte[8]; ?>.png" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
             </a>
             <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
                 <h6 class="mb-0 fw-bold d-block fs-6"><?php echo $compte[0]  ?></h6>

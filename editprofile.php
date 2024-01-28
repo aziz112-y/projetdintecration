@@ -2,12 +2,12 @@
 session_start();
 
 if (!isset($_GET['id'])) {
-  if($type == "client"){
+  if ($type == "client") {
     header("location:profile.php?id=" . $_SESSION['id']);
   }
   header("location:profile.php?id=" . $_SESSION['id']);
 }
-if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
+if ($_SESSION['type'] == "client" && $_GET["id"] != $_SESSION['id']) {
   header("location:editprofile.php?id=" . $_SESSION['id']);
 }
 ?>
@@ -248,7 +248,7 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
                         </ul>
                       </div>
                     </div>
-                      <a class="card-footer text-center border-top-0" href="tickets.php">
+                    <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
                 </div>
@@ -279,14 +279,14 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
                     ?> Profile</small>
                 </div>
                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.png" alt="profile" />
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                 </a>
 
                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                   <div class="card border-0 w280">
                     <div class="card-body pb-0">
                       <div class="d-flex py-1">
-                        <img class="avatar rounded-circle" src="assets/images/profile_av.png" alt="profile" />
+                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                         <div class="flex-fill ms-3">
                           <p class="mb-0">
                             <span class="font-weight-bold"><?php
@@ -353,7 +353,7 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
 
       <div class="card mb-3">
         <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-          <h6 class="mb-0 fw-bold ">Modifier  Profile</h6>
+          <h6 class="mb-0 fw-bold ">Modifier Profile</h6>
         </div>
         <div class="card-body">
           <form id="edit-form" method="post" action="controller/compte/editprofile.php?id=<?php echo $_GET["id"] ?>">
@@ -361,9 +361,9 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
         </div>
       </div>
 
-      
-      </div>
+
     </div>
+  </div>
   </div>
 
   <!-- Jquery Core Js -->
@@ -382,13 +382,12 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
         document.getElementById("edit-form").innerHTML = this.responseText;
       }
       <?php
-      if($_SESSION['type'] == "client"){
+      if ($_SESSION['type'] == "client") {
         echo 'xhttp.open("GET", "controller/compte/editprofile.php?id=' . $_GET["id"] . '", true);';
-      
-      }else{
+      } else {
         echo 'xhttp.open("GET", "controller/compte/editprofile.php?id=' . $_GET["id"] . '", true);';
       }
-      
+
       ?>
       xhttp.send();
     }
