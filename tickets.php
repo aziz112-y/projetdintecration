@@ -266,7 +266,7 @@ if (isset($_GET["status"])) {
                           if ($_SESSION["type"] == "supervisor") {
                             echo "Superviseur";
                           } else {
-                            if ($_SESSION["type"] == "supervisor") {
+                            if ($_SESSION["type"] == "admin") {
                               echo "Admin";
                             } else {
                               echo "Client";

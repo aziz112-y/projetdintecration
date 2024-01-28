@@ -1,3 +1,4 @@
+
 <?php
 require_once("../../crud/crud_account.php");
 require_once("../../crud/crud_societe.php");

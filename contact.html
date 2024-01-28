@@ -666,7 +666,13 @@
                                             <div class="card-body d-flex teacher-fulldeatil flex-column">
                                                 <div class="profile-teacher text-center w220 mx-auto">
                                                     <a href="#">
-                                                        <img src="assets/images/lg/avatar5.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+                                                                        <?php
+                if($_SESSION['gender']=="male"){
+                    echo'<img src="assets/images/lg/avatar5.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">';
+                }else{
+                    echo'<img src="assets/images/lg/avatar2.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">';
+                }
+                ?>
                                                     </a>
                                                     <button class="btn btn-primary" style="position: absolute;top:15px;right: 15px;" data-bs-toggle="modal" data-bs-target="#editprofile"><i class="icofont-edit"></i></button>
                                                     <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
