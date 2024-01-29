@@ -522,6 +522,7 @@ if (isset($_GET["status"])) {
   <!-- Jquery Page Js -->
   <script src="js/template.js"></script>
   <script>
+
     function table() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {
