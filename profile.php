@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (!isset($_GET['id'])) {
-  header("location:profile.php?id=".$_SESSION['id']);
+  header("location:profile.php?id=" . $_SESSION['id']);
 }
-if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
+if ($_SESSION['type'] == "client" && $_GET["id"] != $_SESSION['id']) {
   header("location:profile.php?id=" . $_SESSION['id']);
 }
 ?>
@@ -248,7 +248,7 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
                         </ul>
                       </div>
                     </div>
-                      <a class="card-footer text-center border-top-0" href="tickets.php">
+                    <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
                 </div>
@@ -355,7 +355,7 @@ if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
             <div class="col-md-12">
               <div class="card border-0 mb-4 no-bg">
                 <div class="card-header py-3 px-0 d-flex align-items-center  justify-content-between border-bottom">
-                  <h3 class=" fw-bold flex-fill mb-0">Profile du Client</h3>
+                  <h3 class=" fw-bold flex-fill mb-0">Profile</h3>
                 </div>
               </div>
             </div>

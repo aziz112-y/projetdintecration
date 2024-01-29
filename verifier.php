@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["email"])) {
-  if($_SESSION["type"]=="client"){
+  if ($_SESSION["type"] == "client") {
     header("location:index.php");
   }
 } else {
@@ -285,25 +285,25 @@ if (isset($_SESSION["email"])) {
                   <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
                 </div>
               </div>
-              
-  
+
+
               <!--Profile-->
               <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center">
                 <div class="u-info me-2">
                   <p class="mb-0 text-end line-height-sm">
-                  <span class="font-weight-bold"><?php echo $_SESSION["nom"].' '.$_SESSION["prenom"] ?></span>
+                    <span class="font-weight-bold"><?php echo $_SESSION["nom"] . ' ' . $_SESSION["prenom"] ?></span>
                   </p>
                   <small><?php echo $_SESSION["type"]; ?> Profile</small>
                 </div>
                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.png" alt="profile">
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
                 </a>
 
                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                   <div class="card border-0 w280">
                     <div class="card-body pb-0">
                       <div class="d-flex py-1">
-                        <img class="avatar rounded-circle" src="assets/images/profile_av.png" alt="profile">
+                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
                         <div class="flex-fill ms-3">
                           <p class="mb-0">
                             <span class="font-weight-bold">Superviseur</span>
@@ -377,7 +377,7 @@ if (isset($_SESSION["email"])) {
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
                         <li><a class="dropdown-item" href="#">Verifie</a></li>
                         <li><a class="dropdown-item" href="#">Non verifie</a></li>
-                    
+
                       </ul>
                     </div>
                     <a href="ajoutercompte.php"><button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal" data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add Client</button></a>
@@ -392,42 +392,42 @@ if (isset($_SESSION["email"])) {
         </div>
       </div>
 
-    
-                    
-               
-          
-      
 
 
-  </div>
 
-  <!-- Jquery Core Js -->
-  <script src="assets/bundles/libscripts.bundle.js"></script>
 
-  <!-- Plugin Js-->
-  <script src="assets/bundles/dataTables.bundle.js"></script>
 
-  <!-- Jquery Page Js -->
-  <script src="js/template.js"></script>
-  <script>
-    function table() {
-      const xhttp = new XMLHttpRequest();
-      xhttp.onload = function() {
-        document.getElementById("table").innerHTML = this.responseText;
+
+
+    </div>
+
+    <!-- Jquery Core Js -->
+    <script src="assets/bundles/libscripts.bundle.js"></script>
+
+    <!-- Plugin Js-->
+    <script src="assets/bundles/dataTables.bundle.js"></script>
+
+    <!-- Jquery Page Js -->
+    <script src="js/template.js"></script>
+    <script>
+      function table() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+          document.getElementById("table").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "controller/compte/allverif.php");
+        xhttp.send();
+
       }
-      xhttp.open("GET", "controller/compte/allverif.php");
-      xhttp.send();
-
-    }
-    setInterval(table, 6000);
-  </script>
+      setInterval(table, 6000);
+    </script>
 
 
 
 
-  <script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/65839862293/languages/en.js">
+    <script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/65839862293/languages/en.js">
 
-  </script>
+    </script>
 </body>
 
 </html>
