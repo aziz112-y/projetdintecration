@@ -536,11 +536,8 @@ if (isset($_SESSION["email"])) {
               </div>
             </div>
           </div>
-          <!-- Row End -->
         </div>
       </div>
-
-      <!-- Modal Members-->
       <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="addUserLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
@@ -696,13 +693,8 @@ if (isset($_SESSION["email"])) {
       </div>
     </div>
   </div>
-  <!-- Jquery Core Js -->
   <script src="assets/bundles/libscripts.bundle.js"></script>
-
-  <!-- Plugin Js-->
   <script src="assets/bundles/apexcharts.bundle.js"></script>
-
-  <!-- Jquery Page Js -->
   <script src="../js/template.js"></script>
   <script src="../js/page/hr.js"></script>
   <script>
@@ -712,11 +704,11 @@ if (isset($_SESSION["email"])) {
           .then(response => response.text())
           .then(data => {
             male = Number(data);
-            resolve(); // Resolve the promise once data is loaded
+            resolve();
           })
           .catch(error => {
             console.error('Error loading male data:', error);
-            reject(error); // Reject the promise if an error occurs
+            reject(error);
           });
       });
     }

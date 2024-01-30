@@ -171,7 +171,7 @@ if (isset($_GET["status"])) {
                               <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
                               <div class="flex-fill ms-2">
                                 <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Dylan Hunter</span>
+                                  <span class="font-weight-bold"> <?php echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];?></span>
                                   <small>2MIN</small>
                                 </p>
                                 <span class="">Added 2021-02-19 my-Task ui/ux Design
@@ -179,69 +179,7 @@ if (isset($_GET["status"])) {
                               </div>
                             </a>
                           </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <div class="avatar rounded-circle no-thumbnail">
-                                DF
-                              </div>
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Task added Get Started with Fast Cad
-                                  project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Quality Assurance Task Completed</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar5.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Add New Project for App Developemnt</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar6.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Add Timesheet For Rhinestone project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Zoe Wright</span>
-                                  <small class="">1DAY</small>
-                                </p>
-                                <span class="">Add Calander Event</span>
-                              </div>
-                            </a>
-                          </li>
+                          
                         </ul>
                       </div>
                     </div>
@@ -544,6 +482,5 @@ if (isset($_GET["status"])) {
   </script>
 </body>
 
-<!-- Mirrored from pixelwibes.com/template/my-task/html/dist/tickets.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Jan 2024 19:05:44 GMT -->
 
 </html>
