@@ -149,27 +149,7 @@ if (isset($_SESSION['email'])) {
 
     <?php
     } ?>
-    <div class="col-md-6">
-        <label class="form-label">Gender</label>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios11">
-                        Male
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios22" value="option2">
-                    <label class="form-check-label" for="exampleRadios22">
-                        Female
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 </div>
 
