@@ -83,7 +83,7 @@ if ($_SESSION['type'] == "client" && $_GET["id"] != $_SESSION['id']) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else if($_SESSION['type'] == "superadmin") {
+          } else if($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
