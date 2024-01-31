@@ -123,10 +123,7 @@ if (isset($_SESSION["email"])) {
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
             <!-- Menu: Sub menu ul -->
             <ul class="sub-menu collapse" id="tikit-Components">
-              <li>
-                <a class="ms-link" href="comptes.php?type=tout">
-                  <span>Tout</span></a>
-              </li>
+
               <li>
                 <a class="ms-link" href="comptes.php?type=Client">
                   <span>Client Verifier</span></a>
