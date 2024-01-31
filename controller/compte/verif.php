@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['type'] != "supervisor") {
+if ($_SESSION['type'] == "client") {
     header("location:../../index.php");
 } else {
     if (isset($_GET["id"])) {

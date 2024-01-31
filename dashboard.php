@@ -80,7 +80,7 @@ if (isset($_SESSION["email"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else {
+          } else if($_SESSION['type'] == "superadmin") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -101,7 +101,7 @@ if (isset($_SESSION["email"])) {
                 </ul>
               </li>
               <li class="collapsed">
-                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                 <!-- Menu: Sub menu ul -->
                 <ul class="sub-menu collapse" id="client-Components">
@@ -113,9 +113,30 @@ if (isset($_SESSION["email"])) {
                     <a class="ms-link" href="verifier.php">
                       <span>Verifier Comptes</span></a>
                   </li>
-
                 </ul>
               </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+            <!-- Menu: Sub menu ul -->
+            <ul class="sub-menu collapse" id="tikit-Components">
+              <li>
+                <a class="ms-link" href="comptes.php?type=tout">
+                  <span>Tout</span></a>
+              </li>
+              <li>
+                <a class="ms-link" href="comptes.php?type=Client">
+                  <span>Client Verifier</span></a>
+              </li>
+              <li>
+                <a class="ms-link" href="verifier.php">
+                  <span>Client Non Verifier</span></a>
+              </li>
+            </ul>
+          </li>
+            </ul>
+          </li>';
           }
           ?>
 
@@ -158,6 +179,11 @@ if (isset($_SESSION["email"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
+                  <div class="card-body">
+                  <div class="flex-grow-1" id="reclamation">
+                        
+                        </div>
+                  </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>

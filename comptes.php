@@ -179,7 +179,7 @@ if (isset($_SESSION["email"])) {
   </style>
 </head>
 
-<body onload="table()" data-mytask="theme-indigo">
+<body onload="table();loadreclamation()" data-mytask="theme-indigo">
 
   <div id="mytask-layout">
     <!--header nav-->
@@ -222,8 +222,45 @@ if (isset($_SESSION["email"])) {
               </li>
             </ul>
           </li>
-          <li class="collapsed">
-            <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+          <?php if ($_SESSION['type'] == "client") {
+          } else if($_SESSION['type'] == "superadmin") {
+            echo '<li class="collapsed">
+                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="tikit-Components">
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=tout">
+                      <span>Tout</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Client">
+                      <span>Client</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Employee">
+                      <span>Employees</span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="collapsed">
+                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="client-Components">
+                  <li>
+                    <a class="ms-link" href="ajoutercompte.php">
+                      <span>Ajouter Comptes</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="verifier.php">
+                      <span>Verifier Comptes</span></a>
+                  </li>
+                </ul>
+              </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
             <!-- Menu: Sub menu ul -->
             <ul class="sub-menu collapse" id="tikit-Components">
@@ -233,30 +270,18 @@ if (isset($_SESSION["email"])) {
               </li>
               <li>
                 <a class="ms-link" href="comptes.php?type=Client">
-                  <span>Client</span></a>
-              </li>
-              <li>
-                <a class="ms-link" href="comptes.php?type=Employee">
-                  <span>Employees</span></a>
-              </li>
-            </ul>
-          </li>
-          <li class="collapsed">
-            <a class="m-link " data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
-              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-            <!-- Menu: Sub menu ul -->
-            <ul class="sub-menu collapse" id="client-Components">
-              <li>
-                <a class="ms-link" href="ajoutercompte.php">
-                  <span>Ajouter Comptes</span></a>
+                  <span>Client Verifier</span></a>
               </li>
               <li>
                 <a class="ms-link" href="verifier.php">
-                  <span>Verifier Comptes</span></a>
+                  <span>Client Non Verifier</span></a>
               </li>
-
             </ul>
           </li>
+            </ul>
+          </li>';
+          }
+          ?>
         </ul>
         <button type="button" class="btn btn-link sidebar-mini-btn text-light">
           <span class="ms-2"><i class="icofont-bubble-right"></i></span>
@@ -272,17 +297,22 @@ if (isset($_SESSION["email"])) {
             <!-- header rightbar icon -->
             <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
               <!--Help-->
-              <div class="d-flex">
-                <div class="avatar-list avatar-list-stacked px-3">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
-                  <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+              <?php
+              if ($_SESSION["type"] == "supervisor") {
+              ?>
+                <div class="d-flex">
+                  <div class="avatar-list avatar-list-stacked px-3">
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="" />
+                    <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+                  </div>
                 </div>
-              </div>
+              <?php
+              } ?>
               <!--Notification-->
               <div class="dropdown notifications">
                 <a class="nav-link dropdown-toggle pulse" href="#" role="button" data-bs-toggle="dropdown">
@@ -291,94 +321,11 @@ if (isset($_SESSION["email"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
-                    <div class="card-header border-0 p-3">
-                      <h5 class="mb-0 font-weight-light d-flex justify-content-between">
-                        <span>Notifications</span>
-                        <span class="badge text-white">11</span>
-                      </h5>
-                    </div>
-                    <div class="tab-content card-body">
-                      <div class="tab-pane fade show active">
-                        <ul class="list-unstyled list mb-0">
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Dylan Hunter</span>
-                                  <small>2MIN</small>
-                                </p>
-                                <span class="">Added 2021-02-19 my-Task ui/ux Design
-                                  <span class="badge bg-success">Review</span></span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <div class="avatar rounded-circle no-thumbnail">
-                                DF
-                              </div>
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Task added Get Started with Fast Cad
-                                  project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Quality Assurance Task Completed</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar5.jpg" alt="">
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Add New Project for App Developemnt</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar6.jpg" alt="">
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Add Timesheet For Rhinestone project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Zoe Wright</span>
-                                  <small class="">1DAY</small>
-                                </p>
-                                <span class="">Add Calander Event</span>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <div class="card-body">
+                  <div class="flex-grow-1" id="reclamation">
+                        
+                        </div>
+                  </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
@@ -521,6 +468,15 @@ if (isset($_SESSION["email"])) {
 
     }
     setInterval(table, 6000);
+    function loadreclamation() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamation").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
   </script>
 
 

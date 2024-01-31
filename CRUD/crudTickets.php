@@ -204,7 +204,7 @@ LEFT JOIN
 
     function getTopTicket()
     {
-        $req = "select * from ticket order by DateHeure desc limit 5;";
+        $req = "select * from ticket order by DateHeure desc limit 9;";
         $stmt = $this->pdo->query($req);
         return $stmt->fetchAll(PDO::FETCH_NUM);
     }

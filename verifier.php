@@ -181,7 +181,7 @@ if (isset($_SESSION["email"])) {
   </style>
 </head>
 
-<body onload="table()" data-mytask="theme-indigo">
+<body onload="table();loadreclamation()" data-mytask="theme-indigo">
 
   <div id="mytask-layout">
     <!--header nav-->
@@ -224,8 +224,45 @@ if (isset($_SESSION["email"])) {
               </li>
             </ul>
           </li>
-          <li class="collapsed">
-            <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+          <?php if ($_SESSION['type'] == "client") {
+          } else if($_SESSION['type'] == "superadmin") {
+            echo '<li class="collapsed">
+                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="tikit-Components">
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=tout">
+                      <span>Tout</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Client">
+                      <span>Client</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Employee">
+                      <span>Employees</span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="collapsed">
+                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="client-Components">
+                  <li>
+                    <a class="ms-link" href="ajoutercompte.php">
+                      <span>Ajouter Comptes</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="verifier.php">
+                      <span>Verifier Comptes</span></a>
+                  </li>
+                </ul>
+              </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
             <!-- Menu: Sub menu ul -->
             <ul class="sub-menu collapse" id="tikit-Components">
@@ -238,27 +275,15 @@ if (isset($_SESSION["email"])) {
                   <span>Client</span></a>
               </li>
               <li>
-                <a class="ms-link" href="comptes.php?type=Employee">
-                  <span>Employees</span></a>
-              </li>
-            </ul>
-          </li>
-          <li class="collapsed">
-            <a class="m-link " data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
-              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-            <!-- Menu: Sub menu ul -->
-            <ul class="sub-menu collapse" id="client-Components">
-              <li>
-                <a class="ms-link" href="ajoutercompte.php">
-                  <span>Ajouter Comptes</span></a>
-              </li>
-              <li>
                 <a class="ms-link" href="verifier.php">
-                  <span>Verifier Comptes</span></a>
+                  <span>Client Non Verifier</span></a>
               </li>
-
             </ul>
           </li>
+            </ul>
+          </li>';
+          }
+          ?>
         </ul>
         <button type="button" class="btn btn-link sidebar-mini-btn text-light">
           <span class="ms-2"><i class="icofont-bubble-right"></i></span>
@@ -274,17 +299,22 @@ if (isset($_SESSION["email"])) {
             <!-- header rightbar icon -->
             <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
               <!--Help-->
-              <div class="d-flex">
-                <div class="avatar-list avatar-list-stacked px-3">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
-                  <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+              <?php
+              if ($_SESSION["type"] == "supervisor") {
+              ?>
+                <div class="d-flex">
+                  <div class="avatar-list avatar-list-stacked px-3">
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="" />
+                    <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+                  </div>
                 </div>
-              </div>
+              <?php
+              } ?>
 
 
               <!--Profile-->
