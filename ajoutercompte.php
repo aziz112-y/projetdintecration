@@ -1,12 +1,14 @@
 <?php
 session_start();
 if (isset($_SESSION["email"])) {
-  if ($_SESSION["type"] == "client") {
+  if ($_SESSION["type"] != "supervisor" ) {
     header("location:index.php");
   }
 } else {
   header("location:index.php");
 }
+
+
 ?>
 
 

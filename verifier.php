@@ -272,7 +272,7 @@ if (isset($_SESSION["email"])) {
               </li>
               <li>
                 <a class="ms-link" href="comptes.php?type=Client">
-                  <span>Client</span></a>
+                  <span>Client Verifier</span></a>
               </li>
               <li>
                 <a class="ms-link" href="verifier.php">
