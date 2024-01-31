@@ -19,7 +19,7 @@ $table = $crud->getTicketByContact($email);
         <th>Statut</th>
         <?php
         if ($_SESSION['type'] != "client") {
-            echo "<th>Action</th>";
+            echo "<th colspan='2'>Action</th>";
         }
         ?>
     </tr>

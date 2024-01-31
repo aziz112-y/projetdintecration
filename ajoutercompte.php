@@ -1,12 +1,14 @@
 <?php
 session_start();
 if (isset($_SESSION["email"])) {
-  if ($_SESSION["type"] == "client") {
+  if ($_SESSION["type"] != "supervisor" ) {
     header("location:index.php");
   }
 } else {
   header("location:index.php");
 }
+
+
 ?>
 
 
@@ -80,7 +82,7 @@ if (isset($_SESSION["email"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else {
+          } else if($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -115,6 +117,25 @@ if (isset($_SESSION["email"])) {
                   </li>
                 </ul>
               </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+            <!-- Menu: Sub menu ul -->
+            <ul class="sub-menu collapse" id="tikit-Components">
+
+              <li>
+                <a class="ms-link" href="comptes.php?type=Client">
+                  <span>Client Verifier</span></a>
+              </li>
+              <li>
+                <a class="ms-link" href="verifier.php">
+                  <span>Client Non Verifier</span></a>
+              </li>
+            </ul>
+          </li>
+            </ul>
+          </li>';
           }
           ?>
 
@@ -157,97 +178,13 @@ if (isset($_SESSION["email"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
-                    <div class="card-header border-0 p-3">
-                      <h5 class="mb-0 font-weight-light d-flex justify-content-between">
-                        <span>Notifications</span>
-                        <span class="badge text-white">11</span>
-                      </h5>
-                    </div>
-                    <div class="tab-content card-body">
-                      <div class="tab-pane fade show active">
-                        <ul class="list-unstyled list mb-0">
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Dylan Hunter</span>
-                                  <small>2MIN</small>
-                                </p>
-                                <span class="">Added 2021-02-19 my-Task ui/ux Design
-                                  <span class="badge bg-success">Review</span></span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <div class="avatar rounded-circle no-thumbnail">
-                                DF
-                              </div>
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Task added Get Started with Fast Cad
-                                  project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Quality Assurance Task Completed</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar5.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Diane Fisher</span>
-                                  <small>13MIN</small>
-                                </p>
-                                <span class="">Add New Project for App Developemnt</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar6.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Andrea Gill</span>
-                                  <small>1HR</small>
-                                </p>
-                                <span class="">Add Timesheet For Rhinestone project</span>
-                              </div>
-                            </a>
-                          </li>
-                          <li class="py-2">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold">Zoe Wright</span>
-                                  <small class="">1DAY</small>
-                                </p>
-                                <span class="">Add Calander Event</span>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <div class="card-body">
+                  <div class="flex-grow-1" id="reclamation">
+                        
+                        </div>
+                  </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
-
                   </div>
                 </div>
               </div>
@@ -342,7 +279,7 @@ if (isset($_SESSION["email"])) {
             </div>
             <!-- Theme switcher -->
             <div class="form-check form-switch theme-switch">
-              <input class="form-ch                                                                                                                     eck-input fs-6" type="checkbox" role="switch" id="theme-switch" />
+              <input class="form-check-input fs-6" type="checkbox" role="switch" id="theme-switch">
             </div>
           </div>
         </nav>
@@ -353,7 +290,7 @@ if (isset($_SESSION["email"])) {
           <h6 class="mb-0 fw-bold ">Ajouter Compte</h6>
         </div>
         <div class="card-body">
-          <form class="profile-form" method="post" action="/controller/compte/register.php">
+          <form class="profile-form" method="post" action="controller/compte/register.php">
             <div class="card-body ">
 
               <div class="mb-3 text-center">
@@ -589,6 +526,24 @@ if (isset($_SESSION["email"])) {
       );
       chart.render();
     });
+    function loadreclamation() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamation").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
+    function loadreclamation() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamation").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
   </script>
 </body>
 

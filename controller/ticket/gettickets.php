@@ -25,7 +25,7 @@ if ($_SESSION["type"] == "client") {
     <th>Statut</th>
     <?php
     if ($_SESSION['type'] != "client") {
-      echo "<th>Action</th>";
+      echo "<th colspan='2'>Action</th>";
     }
     ?>
   </tr>
@@ -37,7 +37,7 @@ if ($_SESSION["type"] == "client") {
       $status = $_GET['status'];
       if ($row[8] == $status) {
         echo "<tr>";
-        echo "<td>" . $row[0] . "</td>";
+        echo "<td >" . $row[0] . "</td>";
         echo "<td>" . $row[2] . "</td>";
         echo "<td>" . $row[1] . "</td>";
         echo "<td>" . $row[3] . "</td>";
