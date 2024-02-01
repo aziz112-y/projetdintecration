@@ -127,16 +127,7 @@ session_start();
               <?php
               if ($_SESSION["type"] == "supervisor") {
               ?>
-                <div class="d-flex">
-                  <div class="avatar-list avatar-list-stacked px-3">
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="" />
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="" />
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
-                    <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="" />
-                    <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
-                  </div>
+                
                 </div>
               <?php
               } ?>
