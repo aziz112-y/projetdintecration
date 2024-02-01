@@ -286,6 +286,17 @@ if (isset($_SESSION["email"])) {
       </div>
 
       <div class="card mb-3">
+        <?php
+        if (isset($_SESSION["error"]) && isset($_SESSION["error-type"])) {
+          echo '<div id="notif" role="alert" class="alert ' . $_SESSION["error-type"] . '">
+                                    <div class="card-body ' . $_SESSION["error-type"] . '" id="card">
+                                        ' . $_SESSION["error"] . '
+                                    </div>
+                                </div>';
+          unset($_SESSION["error"]);
+          unset($_SESSION["error-type"]);
+        }
+        ?>
         <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
           <h6 class="mb-0 fw-bold ">Ajouter Compte</h6>
         </div>
@@ -374,7 +385,7 @@ if (isset($_SESSION["email"])) {
 
   <!-- Jquery Core Js -->
   <script src="assets/bundles/libscripts.bundle.js"></script>
-
+  <script src="js/notification.js"></script>
   <!-- Plugin Js-->
   <script src="assets/bundles/apexcharts.bundle.js"></script>
 

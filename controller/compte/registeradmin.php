@@ -25,7 +25,7 @@ if (isset($_POST["btn"])) {
             $_SESSION["error-type"] = "bg-danger text-white";
         } else {
             $crud = new CRUD();
-            $result = $crud->Register($nom, $prenom, $email, $tel, $mdp, "admin", null, "enCours", $genre, null, null, null);
+            $result = $crud->Register($nom, $prenom, $email, $tel, $mdp, "admin", null, "Verifie", $genre, null, null, null);
             if ($genre == "male") {
                 $genre = "Monsieur";
             } else {
