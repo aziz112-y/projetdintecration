@@ -1,7 +1,7 @@
 <?php
 require_once "../../model/ticket.php";
 $ticket = new Ticket();
-require_once "../../crud/crudTickets.php";
+require_once "../../CRUD/crudTickets.php";
 $crud = new CrudTicket();
 if ($_SESSION["type"] == "client") {
   $table = $crud->getTicketByContact($_SESSION["email"]);

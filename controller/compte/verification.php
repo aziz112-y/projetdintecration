@@ -1,6 +1,6 @@
 <?php
-require_once '../../crud/Crud_account.php';
-require_once '../../crud/Crud_code.php';
+require_once '../../CRUD/Crud_account.php';
+require_once '../../CRUD/Crud_code.php';
 $token = $_GET['token'];
 
 $code = new Crud_code();
@@ -67,12 +67,12 @@ if ($result == true) {
 
     </div>
 
-    
+
 <?php
 } else {
     $code->deleteCode($token);
 ?>
-    
+
     <div id="mytask-layout">
 
         <!-- main body area -->

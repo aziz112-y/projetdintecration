@@ -1,4 +1,4 @@
 <?php
-require_once("../../crud/crud_account.php");
+require_once("../../CRUD/Crud_account.php");
 $crud = new CRUD();
 // $table = $crud->getAllComptes();

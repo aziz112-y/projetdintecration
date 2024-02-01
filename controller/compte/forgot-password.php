@@ -1,6 +1,6 @@
 <?php
-require_once '../../crud/Crud_account.php';
-require_once '../../crud/Crud_code.php';
+require_once '../../CRUD/Crud_account.php';
+require_once '../../CRUD/Crud_code.php';
 
 session_start();
 $code = new Crud_code();

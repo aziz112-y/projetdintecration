@@ -1,15 +1,15 @@
 <?php
 session_start();
 if (isset($_SESSION["email"])) {
-  if ($_SESSION["type"] == "client") {
-    header("location:index.php");
-  }
+    if ($_SESSION["type"] == "client") {
+        header("location:index.php");
+    }
 } else {
-  header("location:index.php");
+    header("location:index.php");
 }
 ?>
 <?php
-require_once '../../crud/Crud_account.php';
+require_once '../../CRUD/Crud_account.php';
 $crud = new CRUD();
 if (isset($_GET['type'])) {
     if ($_GET['type'] != "tout") {
