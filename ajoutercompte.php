@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["email"])) {
-  if ($_SESSION["type"] != "supervisor" ) {
+  if ($_SESSION["type"] != "supervisor") {
     header("location:index.php");
   }
 } else {
@@ -82,7 +82,7 @@ if (isset($_SESSION["email"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else if($_SESSION['type'] == "supervisor") {
+          } else if ($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -117,7 +117,7 @@ if (isset($_SESSION["email"])) {
                   </li>
                 </ul>
               </li>';
-          }else{
+          } else {
             echo '<li class="collapsed">
             <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -178,11 +178,11 @@ if (isset($_SESSION["email"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
-                  <div class="card-body">
-                  <div class="flex-grow-1" id="reclamation">
-                        
-                        </div>
-                  </div>
+                    <div class="card-body">
+                      <div class="flex-grow-1" id="reclamation">
+
+                      </div>
+                    </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
@@ -290,7 +290,7 @@ if (isset($_SESSION["email"])) {
           <h6 class="mb-0 fw-bold ">Ajouter Compte</h6>
         </div>
         <div class="card-body">
-          <form class="profile-form" method="post" action="controller/compte/register.php">
+          <form class="profile-form" method="post" action="controller/compte/registeradmin.php">
             <div class="card-body ">
               <div class="row">
                 <div class="col-sm-6 mb-3">
@@ -496,6 +496,7 @@ if (isset($_SESSION["email"])) {
       );
       chart.render();
     });
+
     function loadreclamation() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {
@@ -505,6 +506,7 @@ if (isset($_SESSION["email"])) {
       xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
       xhttp.send();
     }
+
     function loadreclamation() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {

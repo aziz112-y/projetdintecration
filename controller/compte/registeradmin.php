@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once '../../crud/Crud_account.php';
-require_once '../../crud/crud_code.php';
+require_once '../../CRUD/Crud_account.php';
+require_once '../../CRUD/crud_code.php';
 
 $_SESSION["error"] = "";
 $_SESSION["error-type"] = "";
@@ -16,7 +16,7 @@ if (isset($_POST["btn"])) {
     $prenom = htmlspecialchars($_POST['prenom']);
     $tel = htmlspecialchars($_POST['tel']);
     $genre = htmlspecialchars($_POST['flexRadioDefault']);
-    if ($email == "" || $mdp == "" || $cmdp == "" || $nom == "" || $prenom == "" || $tel == ""||  $genre == "" ) {
+    if ($email == "" || $mdp == "" || $cmdp == "" || $nom == "" || $prenom == "" || $tel == "" ||  $genre == "") {
         $_SESSION["error"] = "Veuillez remplir tous les champs";
         $_SESSION["error-type"] = "bg-danger text-white";
     } else {
@@ -44,4 +44,5 @@ if (isset($_POST["btn"])) {
         }
     }
 }
-header("Location: ../../register.php");
+$previous_page = $_SERVER["HTTP_REFERER"];
+header("Location:$previous_page");
