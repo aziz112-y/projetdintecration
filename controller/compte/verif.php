@@ -7,6 +7,8 @@ if ($_SESSION['type'] == "client") {
         require_once "../../crud/crud_account.php";
         $crud = new CRUD();
         $crud->verifid(htmlspecialchars(($_GET["id"])));
+        $_SESSION["error"] = "Compte vérifié avec succès.";
+        $_SESSION["error-type"] = "bg-success text-white";
         header("location:../../verifier.php?type=tout");
     }
 }

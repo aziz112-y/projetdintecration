@@ -6,6 +6,7 @@ json_encode($comptes);
 foreach ($comptes as $compte) {
 
 ?>
+
     <div class="col">
         <div class="card teacher-card mr-1">
             <div class="card-body d-flex">

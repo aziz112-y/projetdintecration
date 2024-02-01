@@ -225,7 +225,7 @@ if (isset($_SESSION["email"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else if($_SESSION['type'] == "supervisor") {
+          } else if ($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -260,7 +260,7 @@ if (isset($_SESSION["email"])) {
                   </li>
                 </ul>
               </li>';
-          }else{
+          } else {
             echo '<li class="collapsed">
             <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -412,6 +412,17 @@ if (isset($_SESSION["email"])) {
               </div>
             </div>
           </div><!-- Row End -->
+          <?php
+          if (isset($_SESSION["error"]) && isset($_SESSION["error-type"])) {
+            echo '<div id="notif" role="alert" class="alert ' . $_SESSION["error-type"] . '">
+                                    <div class="card-body ' . $_SESSION["error-type"] . '" id="card">
+                                        ' . $_SESSION["error"] . '
+                                    </div>
+                                </div>';
+            unset($_SESSION["error"]);
+            unset($_SESSION["error-type"]);
+          }
+          ?>
           <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4" id="table">
 
           </div>
@@ -450,7 +461,7 @@ if (isset($_SESSION["email"])) {
 
 
 
-
+    <script src="js/notification.js"></script>
     <script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/65839862293/languages/en.js">
 
     </script>
