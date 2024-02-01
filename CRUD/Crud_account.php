@@ -77,7 +77,7 @@ class CRUD
             return false;
         }
 
-        if ($id == null) {
+        if ($id == null && $type == "client") {
             $id = $soc->addSociete($noms, $adresse, $tels);
         }
         $sql = "INSERT INTO account (nom, prenom, email, tel, mdp, type, matricule, status, gender, centre ) 
