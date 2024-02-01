@@ -260,7 +260,7 @@ if (isset($_SESSION["email"])) {
               </li>';
           }else{
             echo '<li class="collapsed">
-            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+            <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
             <!-- Menu: Sub menu ul -->
             <ul class="sub-menu collapse" id="tikit-Components">
@@ -331,45 +331,73 @@ if (isset($_SESSION["email"])) {
               <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center">
                 <div class="u-info me-2">
                   <p class="mb-0 text-end line-height-sm">
-                    <span class="font-weight-bold"><?php echo $_SESSION["nom"] . ' ' . $_SESSION["prenom"] ?></span>
+                    <span class="font-weight-bold"><?php
+                                                    if ($_SESSION['type'] == "supervisor") {
+                                                      echo "Superviseur";
+                                                    } else {
+                                                      echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];
+                                                    }
+                                                    ?></span>
                   </p>
-                  <small><?php echo $_SESSION["type"]; ?> Profile</small>
+                  <small><?php
+                          if (isset($_SESSION['type'])) {
+                            if ($_SESSION['type'] == "supervisor") {
+                              echo "Superviseur";
+                            } else {
+                              echo "Admin";  // Corrected from "Supervisor"
+                            }
+                          } else {
+                            echo "Client";
+                          }
+                          ?> Profile</small>
                 </div>
                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                 </a>
 
                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                   <div class="card border-0 w280">
                     <div class="card-body pb-0">
                       <div class="d-flex py-1">
-                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
+                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                         <div class="flex-fill ms-3">
                           <p class="mb-0">
-                            <span class="font-weight-bold">Superviseur</span>
+                            <span class="font-weight-bold"><?php
+                                                            if ($_SESSION["type"] == "supervisor") {
+                                                              echo "Superviseur";
+                                                            } else {
+                                                              echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];
+                                                            }
+                                                            ?></span>
                           </p>
-                          <small class="">zimys@gmail.com</small>
+                          <small class=""><?php echo $_SESSION["email"]; ?></small>
                         </div>
                       </div>
-                      <div class="text-center"> <a href="editprofile.php"><button class="btn btn-primary"><i class="icofont-ui-edit"></i></button></a> <a href="profile.php"><button class="btn btn-primary"><i class="icofont-eye-open"></i></button> </a></div>
+                      <div class="text-center"> <a href="editprofile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-ui-edit"></i></BUtton></a> <a href="profile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-eye-open"></i></BUtton> </a></div>
+
                       <div>
-                        <hr class="dropdown-divider border-dark">
+                        <hr class="dropdown-divider border-dark" />
                       </div>
                     </div>
                     <div class="list-group m-2">
                       <a href="deconnexion.php" class="list-group-item list-group-item-action border-0"><i class="icofont-logout fs-6 me-3"></i>Déconnexion</a>
-                      <div>
-                        <hr class="dropdown-divider border-dark">
-                      </div>
-                      <a href="ajoutercompte.php" class="list-group-item list-group-item-action border-0"><i class="icofont-contact-add fs-5 me-3"></i>Ajouter
-                        un Compte</a>
+                      <?php
+                      if ($_SESSION["type"] == "supervisor") {
+                      ?>
+                        <div>
+                          <hr class="dropdown-divider border-dark" />
+                        </div>
+                        <a href="ajoutercompte.php" class="list-group-item list-group-item-action border-0"><i class="icofont-contact-add fs-5 me-3"></i>Ajouter
+                          un Compte</a>
+                      <?php
+                      }
+                      ?>
 
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
             <!-- menu toggler -->
             <button class="navbar-toggler p-0 border-0 menu-toggle order-3" type="button" data-bs-toggle="collapse" data-bs-target="#mainHeader">
               <span class="fa fa-bars"></span>
@@ -410,16 +438,11 @@ if (isset($_SESSION["email"])) {
                   }
                   ?>
                   <div class="col-auto d-flex">
-                    <div class="dropdown ">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                        Status
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="#">Verifier</a></li>
-                        <li><a class="dropdown-item" href="#">Non Verifier</a></li>
-                      </ul>
-                    </div>
-                    <a href="ajoutercompte.php"><button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal" data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add Client</button></a>
+                  <?php
+                  if($_SESSION["type"]=='supervisor'){
+                    echo'                  <a href="ajoutercompte.php"><button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal" data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add Client</button></a>';
+                  }
+                  ?>
                   </div>
                 </div>
               </div>
