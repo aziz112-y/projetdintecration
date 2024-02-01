@@ -22,7 +22,7 @@ if (isset($_SESSION["email"])) {
   <link rel="stylesheet" href="assets/css/my-task.style.min.css" />
 </head>
 
-<body data-mytask="theme-indigo">
+<body onload="loadreclamationx();loadreclamation()" data-mytask="theme-indigo">
   <div id="mytask-layout">
     <!--header nav-->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
@@ -80,7 +80,7 @@ if (isset($_SESSION["email"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else {
+          } else if($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -101,7 +101,7 @@ if (isset($_SESSION["email"])) {
                 </ul>
               </li>
               <li class="collapsed">
-                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                <a class="m-link " data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                 <!-- Menu: Sub menu ul -->
                 <ul class="sub-menu collapse" id="client-Components">
@@ -113,9 +113,26 @@ if (isset($_SESSION["email"])) {
                     <a class="ms-link" href="verifier.php">
                       <span>Verifier Comptes</span></a>
                   </li>
-
                 </ul>
               </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+            <!-- Menu: Sub menu ul -->
+            <ul class="sub-menu collapse" id="tikit-Components">
+              <li>
+                <a class="ms-link" href="comptes.php?type=Client">
+                  <span>Client Verifier</span></a>
+              </li>
+              <li>
+                <a class="ms-link" href="verifier.php">
+                  <span>Client Non Verifier</span></a>
+              </li>
+            </ul>
+          </li>
+            </ul>
+          </li>';
           }
           ?>
 
@@ -158,6 +175,11 @@ if (isset($_SESSION["email"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
+                  <div class="card-body">
+                  <div class="flex-grow-1" id="reclamation">
+                        
+                   </div>
+                  </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
@@ -333,106 +355,11 @@ if (isset($_SESSION["email"])) {
                 <div class="col-md-12 col-lg-12 col-xl-12">
                   <div class="card">
                     <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                      <h6 class="mb-0 fw-bold">Upcomming Interviews</h6>
+                      <h6 class="mb-0 fw-bold">Dernière Réclamation</h6>
                     </div>
                     <div class="card-body">
-                      <div class="flex-grow-1">
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar2.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Natalie Gibson
-                              </h6>
-                              <span class="text-muted">Ui/UX Designer</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 1.30 - 1:30
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar9.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Peter Piperg
-                              </h6>
-                              <span class="text-muted">Web Design</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 9.00 - 1:30
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar12.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Robert Young
-                              </h6>
-                              <span class="text-muted">PHP Developer</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 1.30 - 2:30
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar8.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Victoria Vbell
-                              </h6>
-                              <span class="text-muted">IOS Developer</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 2.00 - 3:30
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar7.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Mary Butler
-                              </h6>
-                              <span class="text-muted">Writer</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 4.00 - 4:30
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center border-bottom flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar3.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">Youn Bel</h6>
-                              <span class="text-muted">Unity 3d</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 7.00 - 8.00
-                          </div>
-                        </div>
-                        <div class="py-2 d-flex align-items-center flex-wrap">
-                          <div class="d-flex align-items-center flex-fill">
-                            <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/lg/avatar2.jpg" alt="profile" />
-                            <div class="d-flex flex-column ps-3">
-                              <h6 class="fw-bold mb-0 small-14">
-                                Gibson Butler
-                              </h6>
-                              <span class="text-muted">Networking</span>
-                            </div>
-                          </div>
-                          <div class="time-block text-truncate">
-                            <i class="icofont-clock-time"></i> 8.00 - 9.00
-                          </div>
-                        </div>
+                      <div class="flex-grow-1" id="reclamationx">
+                        
                       </div>
                     </div>
                   </div>
@@ -442,93 +369,15 @@ if (isset($_SESSION["email"])) {
             <div class="col-md-12">
               <div class="card light-danger-bg">
                 <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                  <h6 class="mb-0 fw-bold">Top Perfrormers</h6>
+                  <h6 class="mb-0 fw-bold">Top Admin</h6>
                 </div>
                 <div class="card-body">
                   <div class="row g-3 align-items-center">
-                    <div class="col-md-12 col-lg-4 col-xl-4 col-xxl-2">
-                      <p>
-                        You have 140
-                        <span class="fw-bold">influencers </span> in your
-                        company.
-                      </p>
-                      <div class="d-flex justify-content-between text-center">
-                        <div class="">
-                          <h3 class="fw-bold">350</h3>
-                          <span class="small">New Task</span>
-                        </div>
-                        <div class="">
-                          <h3 class="fw-bold">130</h3>
-                          <span class="small">Task Completed</span>
-                        </div>
-                      </div>
-                    </div>
+
                     <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-10">
-                      <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-6 row-deck top-perfomer">
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar2.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">
-                                Luke Short
-                              </h6>
-                              <span class="text-muted mb-2">@Short</span>
-                              <h4 class="fw-bold text-primary fs-3">80%</h4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar5.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">John Hard</h6>
-                              <span class="text-muted mb-2">@rdacre</span>
-                              <h4 class="fw-bold text-primary fs-3">70%</h4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar8.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">Paul Rees</h6>
-                              <span class="text-muted mb-2">@Rees</span>
-                              <h4 class="fw-bold text-primary fs-3">77%</h4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar9.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">
-                                Rachel Parr
-                              </h6>
-                              <span class="text-muted mb-2">@Parr</span>
-                              <h4 class="fw-bold text-primary fs-3">85%</h4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar12.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">Eric Reid</h6>
-                              <span class="text-muted mb-2">@Eric</span>
-                              <h4 class="fw-bold text-primary fs-3">95%</h4>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card shadow">
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                              <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/images/lg/avatar3.jpg" alt="profile" />
-                              <h6 class="fw-bold my-2 small-14">Jan Ince</h6>
-                              <span class="text-muted mb-2">@Ince</span>
-                              <h4 class="fw-bold text-primary fs-3">97%</h4>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-6 row-deck top-perfomer" id="topadmin">
+                        
+
                       </div>
                     </div>
                   </div>
@@ -766,7 +615,33 @@ if (isset($_SESSION["email"])) {
       xhttp.open("GET", "controller/dashboard/totaltickets.php", true);
       xhttp.send();
     }
+    function loadtopadmin() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("topadmin").innerHTML = this.responseText;
 
+      }
+      xhttp.open("GET", "controller/dashboard/topadmin.php", true);
+      xhttp.send();
+    }
+    function loadreclamation() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamation").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
+    function loadreclamationx() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamationx").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
     function presence() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {
@@ -890,7 +765,7 @@ if (isset($_SESSION["email"])) {
     }
   </script>
   <script>
-    document.addEventListener("load", loadchart(), loadchart2(), presence(), loadtotaltickets());
+    document.addEventListener("load", loadchart(), loadchart2(), presence(), loadtotaltickets(),loadreclamation(),loadtopadmin());
   </script>
 </body>
 

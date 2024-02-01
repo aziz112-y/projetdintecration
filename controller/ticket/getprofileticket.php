@@ -1,8 +1,8 @@
 <?php
 require_once "../../model/ticket.php";
 $ticket = new Ticket();
-require_once "../../crud/crudTickets.php";
-require_once "../../crud/crud_account.php";
+require_once "../../CRUD/crudTickets.php";
+require_once "../../CRUD/Crud_account.php";
 $acc = new CRUD();
 $crud = new CrudTicket();
 $email = $acc->getEmail($_GET["id"]);
@@ -19,7 +19,7 @@ $table = $crud->getTicketByContact($email);
         <th>Statut</th>
         <?php
         if ($_SESSION['type'] != "client") {
-            echo "<th>Action</th>";
+            echo "<th colspan='2'>Action</th>";
         }
         ?>
     </tr>

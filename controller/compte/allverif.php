@@ -1,11 +1,12 @@
 <?php
-require_once '../../crud/Crud_account.php';
+require_once '../../CRUD/Crud_account.php';
 $crud = new CRUD();
 $comptes = $crud->listerNonVerif();
 json_encode($comptes);
 foreach ($comptes as $compte) {
 
 ?>
+
     <div class="col">
         <div class="card teacher-card mr-1">
             <div class="card-body d-flex">
@@ -14,7 +15,7 @@ foreach ($comptes as $compte) {
                     <div class="about-info d-flex align-items-center mt-1 justify-content-center flex-column">
                         <h6 class="mb-0 fw-bold d-block fs-6 mt-2"><?php echo $compte[5]; ?></h6>
                         <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
-                            <a href="controller/compte/verif.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button></a>
+                            <a href="controller/compte/verif.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary bg-success" data-bs-toggle="modal" data-bs-target="#editproject"><i class="icofont-check-circled text-white"> </i></button></a>
                             <a href="controller/compte/supprimer.php?id=<?php echo $compte[10]; ?>"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button></a>
 
                         </div>

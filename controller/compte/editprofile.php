@@ -1,24 +1,24 @@
 <?php
 session_start();
 
-if((!isset($_GET["id"]))&&($_SESSION['type']=="client")){
+if ((!isset($_GET["id"])) && ($_SESSION['type'] == "client")) {
     header("location:editprofile.php?id=" . $_SESSION['id']);
 }
-if($_SESSION['type']=="client" && $_GET["id"] != $_SESSION['id']){
+if ($_SESSION['type'] == "client" && $_GET["id"] != $_SESSION['id']) {
     header("location:editprofile.php?id=" . $_SESSION['id']);
 }
-require_once '../../crud/Crud_account.php';
+require_once '../../CRUD/Crud_account.php';
 $crud = new CRUD();
 $type = $crud->getTypeById($_GET['id']);
-if(isset($_POST["btn"])){
+if (isset($_POST["btn"])) {
     $id = $_GET['id'];
     $email = $_POST["email"];
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
-    $tel = $_POST["tel"];    
-    if($type == "client"){
+    $tel = $_POST["tel"];
+    if ($type == "client") {
         $crud->Update($id, $nom, $prenom, $email, $tel);
-    }else{
+    } else {
         $matricule = $_POST["matricule"];
         $crud->Update_Admin($id, $nom, $prenom, $email, $tel, $matricule);
     }
@@ -35,8 +35,8 @@ if (isset($_SESSION['email'])) {
         } else {
             $id = $_SESSION['id'];
         }
-        require_once '../../crud/Crud_account.php';
-        require_once '../../crud/Crud_societe.php';
+        require_once '../../CRUD/Crud_account.php';
+        require_once '../../CRUD/crud_societe.php';
         $crud = new CRUD();
         $compte = $crud->Afficher($id);
         $soc = new Societe();
@@ -59,10 +59,10 @@ if (isset($_SESSION['email'])) {
             <div class="col-md-6">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="typec" value="client" <?php
-                    if($type == "client"){
-                        echo "checked";
-                    }
-                    ?>>
+                                                                                                if ($type == "client") {
+                                                                                                    echo "checked";
+                                                                                                }
+                                                                                                ?>>
                     <label class="form-check-label">
                         client
                     </label>
@@ -70,12 +70,12 @@ if (isset($_SESSION['email'])) {
             </div>
             <div class="col-md-6">
                 <div class="form-check">
-                <input class="form-check-input" type="radio" name="typec" value="admin" <?php
-                    if($type == "admin"){
-                        echo "checked";
-                    }
-                    ?>>
-                    
+                    <input class="form-check-input" type="radio" name="typec" value="admin" <?php
+                                                                                            if ($type == "admin") {
+                                                                                                echo "checked";
+                                                                                            }
+                                                                                            ?>>
+
                     <label class="form-check-label">
                         Admin
                     </label>
@@ -120,7 +120,7 @@ if (isset($_SESSION['email'])) {
 
     } else {
     ?>
-        
+
         <div class="col-md-6">
             <label for="emailaddress" class="form-label">Centre Adresse</label>
             <?php
@@ -138,38 +138,18 @@ if (isset($_SESSION['email'])) {
             <?php } ?>
         </div>
         <div class="col-md-6">
-            <label for="emailaddress" class="form-label">Numero du tel</label>
             <?php
-            if($type == "admin"){
-            if ($_SESSION["type"] == 'supervisor') {
+            if ($type == "admin") {
+                if ($_SESSION["type"] == 'supervisor') {
             ?>
-                <input type="text" class="form-control" name="matricule" value="<?php echo $societe["numTel"] ?>" required><?php } else { ?><input type="text" class="form-control" name="matricule" value="<?php echo $societe["numTel"] ?>" required disabled>
-            <?php }} ?>
+                    <input type="text" class="form-control" name="matricule" value="<?php echo $societe["numTel"] ?>" required><?php } else { ?><input type="text" class="form-control" name="matricule" value="<?php echo $societe["numTel"] ?>" required disabled>
+            <?php }
+                                                                                                                        } ?>
         </div>
 
     <?php
     } ?>
-    <div class="col-md-6">
-        <label class="form-label">Gender</label>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios11" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios11">
-                        Male
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios22" value="option2">
-                    <label class="form-check-label" for="exampleRadios22">
-                        Female
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 </div>
 

@@ -21,7 +21,7 @@ if (isset($_GET["status"])) {
   <link rel="stylesheet" href="assets/css/my-task.style.min.css">
 </head>
 
-<body onload="table()" data-mytask="theme-indigo">
+<body onload="table();loadreclamation()" data-mytask="theme-indigo" >
 
   <div id="mytask-layout">
     <!--header nav-->
@@ -80,7 +80,7 @@ if (isset($_GET["status"])) {
             </ul>
           </li>
           <?php if ($_SESSION['type'] == "client") {
-          } else {
+          } else if($_SESSION['type'] == "supervisor") {
             echo '<li class="collapsed">
                 <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
@@ -115,6 +115,24 @@ if (isset($_GET["status"])) {
                   </li>
                 </ul>
               </li>';
+          }else{
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+            <!-- Menu: Sub menu ul -->
+            <ul class="sub-menu collapse" id="tikit-Components">
+              <li>
+                <a class="ms-link" href="comptes.php?type=Client">
+                  <span>Client Verifier</span></a>
+              </li>
+              <li>
+                <a class="ms-link" href="verifier.php">
+                  <span>Client Non Verifier</span></a>
+              </li>
+            </ul>
+          </li>
+            </ul>
+          </li>';
           }
           ?>
 
@@ -157,32 +175,11 @@ if (isset($_GET["status"])) {
                 </a>
                 <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
                   <div class="card border-0 w380">
-                    <div class="card-header border-0 p-3">
-                      <h5 class="mb-0 font-weight-light d-flex justify-content-between">
-                        <span>Notifications</span>
-                        <span class="badge text-white">11</span>
-                      </h5>
+                  <div class="card-body">
+                    <div class="flex-grow-1" id="reclamation">
+                        
                     </div>
-                    <div class="tab-content card-body">
-                      <div class="tab-pane fade show active">
-                        <ul class="list-unstyled list mb-0">
-                          <li class="py-2 mb-1 border-bottom">
-                            <a href="javascript:void(0);" class="d-flex">
-                              <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
-                              <div class="flex-fill ms-2">
-                                <p class="d-flex justify-content-between mb-0">
-                                  <span class="font-weight-bold"> <?php echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];?></span>
-                                  <small>2MIN</small>
-                                </p>
-                                <span class="">Added 2021-02-19 my-Task ui/ux Design
-                                  <span class="badge bg-success">Review</span></span>
-                              </div>
-                            </a>
-                          </li>
-                          
-                        </ul>
-                      </div>
-                    </div>
+                  </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
                   </div>
@@ -460,7 +457,15 @@ if (isset($_GET["status"])) {
   <!-- Jquery Page Js -->
   <script src="js/template.js"></script>
   <script>
+    function loadreclamation() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamation").innerHTML = this.responseText;
 
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
     function table() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {

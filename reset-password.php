@@ -80,11 +80,11 @@ if (isset($_GET['token'])) {
                                     <div class="col-12">
                                         <div class="mb-2">
                                             <label class="form-label">Mot de passe</label>
-                                            <input type="password" name="email" class="form-control form-control-lg" placeholder="***********">
+                                            <input type="password" name="newpass" class="form-control form-control-lg" placeholder="***********">
                                         </div>
                                         <div class="mb-2">
                                             <label class="form-label">Confirmer le mot de passe</label>
-                                            <input type="password" name="email" class="form-control form-control-lg" placeholder="***********">
+                                            <input type="password" name="cnewpass" class="form-control form-control-lg" placeholder="***********">
                                         </div>
                                     </div>
                                     <div class="col-12 text-center mt-4">

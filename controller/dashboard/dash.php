@@ -1,8 +1,8 @@
 <?php
 
-require_once "../../crud/crud_account.php";
-require_once "../../crud/crud_societe.php";
-require_once "../../crud/crudTickets.php";
+require_once "../../CRUD/Crud_account.php";
+require_once "../../CRUD/crud_societe.php";
+require_once "../../CRUD/crudTickets.php";
 $crud_compte = new CRUD();
 $crud_societe = new Societe();
 $crud_ticket = new CrudTicket();

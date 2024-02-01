@@ -77,7 +77,7 @@ class CRUD
             return false;
         }
 
-        if ($id == null) {
+        if ($id == null && $type == "client") {
             $id = $soc->addSociete($noms, $adresse, $tels);
         }
         $sql = "INSERT INTO account (nom, prenom, email, tel, mdp, type, matricule, status, gender, centre ) 
@@ -167,9 +167,9 @@ class CRUD
     }
     function getTopAdmin()
     {
-        $sql = "SELECT a.nom, a.prenom, a.gender, a.type, a.email, COUNT(c.cloture_id) AS cloture_count FROM account a JOIN cloture c ON c.cloture_par = a.email WHERE a.type = 'admin' AND a.status = 'Verifie' GROUP BY a.nom, a.prenom, a.gender, a.type, a.email ORDER BY cloture_count DESC LIMIT 5;";
+        $sql = "SELECT a.nom, a.prenom, a.gender, a.type, a.email, COUNT(c.cloture_id) AS cloture_count FROM account a JOIN cloture c ON c.cloture_par = a.email WHERE a.type = 'admin'or a.type='supervisor' AND a.status = 'Verifie' GROUP BY a.nom, a.prenom, a.gender, a.type, a.email ORDER BY cloture_count DESC LIMIT 5;";
         $res = $this->pdo->query($sql);
-        return $res->fetch(PDO::FETCH_NUM);
+        return $res->fetchAll(PDO::FETCH_NUM);
     }
     function getMale()
     {

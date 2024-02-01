@@ -1,5 +1,5 @@
 <?php
-require_once("../../CRUD/crudtickets.php");
+require_once("../../CRUD/crudTickets.php");
 $crud = new CrudTicket();
 if (isset($_POST['diag'])) {
     $diag = htmlspecialchars($_POST['diagnostic']);

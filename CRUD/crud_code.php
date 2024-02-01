@@ -1,7 +1,7 @@
 <?php
 require_once('../../config/connection.php');
 require_once "../../model/code.php";
-require_once "crud_account.php";
+require_once "Crud_account.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

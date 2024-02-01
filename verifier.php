@@ -181,7 +181,7 @@ if (isset($_SESSION["email"])) {
   </style>
 </head>
 
-<body onload="table()" data-mytask="theme-indigo">
+<body onload="table();loadreclamation()" data-mytask="theme-indigo">
 
   <div id="mytask-layout">
     <!--header nav-->
@@ -224,41 +224,62 @@ if (isset($_SESSION["email"])) {
               </li>
             </ul>
           </li>
-          <li class="collapsed">
-            <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+          <?php if ($_SESSION['type'] == "client") {
+          } else if ($_SESSION['type'] == "supervisor") {
+            echo '<li class="collapsed">
+                <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="tikit-Components">
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=tout">
+                      <span>Tout</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Client">
+                      <span>Client</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="comptes.php?type=Employee">
+                      <span>Employees</span></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="collapsed">
+                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="client-Components">
+                  <li>
+                    <a class="ms-link" href="ajoutercompte.php">
+                      <span>Ajouter Comptes</span></a>
+                  </li>
+                  <li>
+                    <a class="ms-link" href="verifier.php">
+                      <span>Verifier Comptes</span></a>
+                  </li>
+                </ul>
+              </li>';
+          } else {
+            echo '<li class="collapsed">
+            <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-users-alt-5"></i> <span>Les Comptes</span>
               <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
             <!-- Menu: Sub menu ul -->
             <ul class="sub-menu collapse" id="tikit-Components">
               <li>
-                <a class="ms-link" href="comptes.php?type=tout">
-                  <span>Tout</span></a>
-              </li>
-              <li>
                 <a class="ms-link" href="comptes.php?type=Client">
-                  <span>Client</span></a>
-              </li>
-              <li>
-                <a class="ms-link" href="comptes.php?type=Employee">
-                  <span>Employees</span></a>
-              </li>
-            </ul>
-          </li>
-          <li class="collapsed">
-            <a class="m-link " data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
-              <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-            <!-- Menu: Sub menu ul -->
-            <ul class="sub-menu collapse" id="client-Components">
-              <li>
-                <a class="ms-link" href="ajoutercompte.php">
-                  <span>Ajouter Comptes</span></a>
+                  <span>Client Verifier</span></a>
               </li>
               <li>
                 <a class="ms-link" href="verifier.php">
-                  <span>Verifier Comptes</span></a>
+                  <span>Client Non Verifier</span></a>
               </li>
-
             </ul>
           </li>
+            </ul>
+          </li>';
+          }
+          ?>
         </ul>
         <button type="button" class="btn btn-link sidebar-mini-btn text-light">
           <span class="ms-2"><i class="icofont-bubble-right"></i></span>
@@ -274,55 +295,89 @@ if (isset($_SESSION["email"])) {
             <!-- header rightbar icon -->
             <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
               <!--Help-->
-              <div class="d-flex">
-                <div class="avatar-list avatar-list-stacked px-3">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                  <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
-                  <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+              <?php
+              if ($_SESSION["type"] == "supervisor") {
+              ?>
+                <div class="d-flex">
+                  <div class="avatar-list avatar-list-stacked px-3">
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="" />
+                    <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="" />
+                    <a href="ajoutercompte.php"><span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal"><i class="icofont-ui-add"></i></span></a>
+                  </div>
                 </div>
-              </div>
+              <?php
+              } ?>
 
 
               <!--Profile-->
               <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center">
                 <div class="u-info me-2">
                   <p class="mb-0 text-end line-height-sm">
-                    <span class="font-weight-bold"><?php echo $_SESSION["nom"] . ' ' . $_SESSION["prenom"] ?></span>
+                    <span class="font-weight-bold"><?php
+                                                    if ($_SESSION['type'] == "supervisor") {
+                                                      echo "Superviseur";
+                                                    } else {
+                                                      echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];
+                                                    }
+                                                    ?></span>
                   </p>
-                  <small><?php echo $_SESSION["type"]; ?> Profile</small>
+                  <small><?php
+                          if (isset($_SESSION['type'])) {
+                            if ($_SESSION['type'] == "supervisor") {
+                              echo "Superviseur";
+                            } else {
+                              echo "Admin";  // Corrected from "Supervisor"
+                            }
+                          } else {
+                            echo "Client";
+                          }
+                          ?> Profile</small>
                 </div>
                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                 </a>
 
                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                   <div class="card border-0 w280">
                     <div class="card-body pb-0">
                       <div class="d-flex py-1">
-                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile">
+                        <img class="avatar rounded-circle" src="assets/profile/<?php echo $_SESSION['gender']; ?>.png" alt="profile" />
                         <div class="flex-fill ms-3">
                           <p class="mb-0">
-                            <span class="font-weight-bold">Superviseur</span>
+                            <span class="font-weight-bold"><?php
+                                                            if ($_SESSION["type"] == "supervisor") {
+                                                              echo "Superviseur";
+                                                            } else {
+                                                              echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];
+                                                            }
+                                                            ?></span>
                           </p>
-                          <small class="">zimys@gmail.com</small>
+                          <small class=""><?php echo $_SESSION["email"]; ?></small>
                         </div>
                       </div>
-                      <div class="text-center"> <a href="editprofile.php"><button class="btn btn-primary"><i class="icofont-ui-edit"></i></button></a> <a href="profile.php"><button class="btn btn-primary"><i class="icofont-eye-open"></i></button> </a></div>
+                      <div class="text-center"> <a href="editprofile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-ui-edit"></i></BUtton></a> <a href="profile.php?id=<?php echo $_SESSION['id']; ?>"><BUtton class="btn btn-primary"><i class="icofont-eye-open"></i></BUtton> </a></div>
+
                       <div>
-                        <hr class="dropdown-divider border-dark">
+                        <hr class="dropdown-divider border-dark" />
                       </div>
                     </div>
                     <div class="list-group m-2">
                       <a href="deconnexion.php" class="list-group-item list-group-item-action border-0"><i class="icofont-logout fs-6 me-3"></i>Déconnexion</a>
-                      <div>
-                        <hr class="dropdown-divider border-dark">
-                      </div>
-                      <a href="ajoutercompte.php" class="list-group-item list-group-item-action border-0"><i class="icofont-contact-add fs-5 me-3"></i>Ajouter
-                        un Compte</a>
+                      <?php
+                      if ($_SESSION["type"] == "supervisor") {
+                      ?>
+                        <div>
+                          <hr class="dropdown-divider border-dark" />
+                        </div>
+                        <a href="ajoutercompte.php" class="list-group-item list-group-item-action border-0"><i class="icofont-contact-add fs-5 me-3"></i>Ajouter
+                          un Compte</a>
+                      <?php
+                      }
+                      ?>
 
                     </div>
                   </div>
@@ -366,26 +421,30 @@ if (isset($_SESSION["email"])) {
                   if (isset($_GET['type'])) {
                     echo '<h6 class="mb-0 fw-bold">' . $_GET['type'] . 's</h6>';
                   } else {
-                    echo '<h6 class="mb-0 fw-bold">Tout les Comptes</h6>';
+                    echo '<h6 class="mb-0 fw-bold">les Comptes non Verifier</h6>';
                   }
                   ?>
                   <div class="col-auto d-flex">
-                    <div class="dropdown ">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                        Status
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="#">Verifie</a></li>
-                        <li><a class="dropdown-item" href="#">Non verifie</a></li>
-
-                      </ul>
-                    </div>
-                    <a href="ajoutercompte.php"><button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal" data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add Client</button></a>
+                  <?php
+                  if($_SESSION["type"]=='supervisor'){
+                    echo'<a href="ajoutercompte.php"><button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal" data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add Client</button></a>';
+                  }
+                  ?>
                   </div>
-                </div>
               </div>
             </div>
           </div><!-- Row End -->
+          <?php
+          if (isset($_SESSION["error"]) && isset($_SESSION["error-type"])) {
+            echo '<div id="notif" role="alert" class="alert ' . $_SESSION["error-type"] . '">
+                                    <div class="card-body ' . $_SESSION["error-type"] . '" id="card">
+                                        ' . $_SESSION["error"] . '
+                                    </div>
+                                </div>';
+            unset($_SESSION["error"]);
+            unset($_SESSION["error-type"]);
+          }
+          ?>
           <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4" id="table">
 
           </div>
@@ -424,7 +483,7 @@ if (isset($_SESSION["email"])) {
 
 
 
-
+    <script src="js/notification.js"></script>
     <script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/65839862293/languages/en.js">
 
     </script>

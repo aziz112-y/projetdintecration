@@ -1,7 +1,7 @@
 <?php
 require_once "../../model/ticket.php";
 $ticket = new Ticket();
-require_once "../../crud/crudTickets.php";
+require_once "../../CRUD/crudTickets.php";
 $crud = new CrudTicket();
 if ($_SESSION["type"] == "client") {
   $table = $crud->getTicketByContact($_SESSION["email"]);
@@ -25,7 +25,7 @@ if ($_SESSION["type"] == "client") {
     <th>Statut</th>
     <?php
     if ($_SESSION['type'] != "client") {
-      echo "<th>Action</th>";
+      echo "<th colspan='2'>Action</th>";
     }
     ?>
   </tr>
@@ -37,7 +37,7 @@ if ($_SESSION["type"] == "client") {
       $status = $_GET['status'];
       if ($row[8] == $status) {
         echo "<tr>";
-        echo "<td>" . $row[0] . "</td>";
+        echo "<td >" . $row[0] . "</td>";
         echo "<td>" . $row[2] . "</td>";
         echo "<td>" . $row[1] . "</td>";
         echo "<td>" . $row[3] . "</td>";
@@ -96,9 +96,6 @@ if ($_SESSION["type"] == "client") {
             echo "<td><a href='cloture.php?id=" . $row[0] . "'><button class='btn btn-primary'>Modifier</button></a></td>";
           }
         }
-      }
-      if($_SESSION["type"]=="supervisor"){
-        echo "<td><a href='controller/ticket/supprimer.php?id=" . $row[0] . "'><button class='btn btn-danger text-white'>Supprimer</button></a></td>";
       }
       echo "</tr>";
     }
