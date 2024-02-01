@@ -138,7 +138,6 @@ if (isset($_SESSION['email'])) {
             <?php } ?>
         </div>
         <div class="col-md-6">
-            <label for="emailaddress" class="form-label">Numero du tel</label>
             <?php
             if($type == "admin"){
             if ($_SESSION["type"] == 'supervisor') {
