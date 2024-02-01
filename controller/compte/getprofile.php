@@ -8,7 +8,9 @@ $id = $_GET["id"];
 $compte = $crud->Afficher($id);
 
 if ($compte) {
-    $societe = $soc->getSocieteById($compte[9]);
+    if ($compte[9] != NULL) {
+        $societe = $soc->getSocieteById($compte[9]);
+    }
 ?>
     <div class="card-body d-flex teacher-fulldeatil">
         <div class="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
@@ -40,7 +42,10 @@ if ($compte) {
                     <div class="d-flex align-items-center">
                         <i class="icofont-address-book"></i>
                         <span class="ms-2 small"><?php
-                                                    echo $societe["adresse"];
+                                                    if ($compte[9] != NULL) {
+                                                        echo $societe["adresse"];
+                                                    }
+
                                                     ?></span>
                     </div>
                 </div>
