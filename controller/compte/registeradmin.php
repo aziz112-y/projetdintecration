@@ -15,11 +15,8 @@ if (isset($_POST["btn"])) {
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $tel = htmlspecialchars($_POST['tel']);
-    $tels = htmlspecialchars($_POST['nums']);
-    $noms = htmlspecialchars($_POST['noms']);
-    $adresse = htmlspecialchars($_POST['adresse']);
     $genre = htmlspecialchars($_POST['flexRadioDefault']);
-    if ($email == "" || $mdp == "" || $cmdp == "" || $nom == "" || $prenom == "" || $tel == "" || $noms == "" || $adresse == "" || $genre == "" || $tels == "") {
+    if ($email == "" || $mdp == "" || $cmdp == "" || $nom == "" || $prenom == "" || $tel == ""||  $genre == "" ) {
         $_SESSION["error"] = "Veuillez remplir tous les champs";
         $_SESSION["error-type"] = "bg-danger text-white";
     } else {
@@ -28,7 +25,7 @@ if (isset($_POST["btn"])) {
             $_SESSION["error-type"] = "bg-danger text-white";
         } else {
             $crud = new CRUD();
-            $result = $crud->Register($nom, $prenom, $email, $tel, $mdp, "client", "null", "enCours", $genre, $noms, $tels, $adresse);
+            $result = $crud->Register($nom, $prenom, $email, $tel, $mdp, "admin", null, "enCours", $genre, null, null, null);
             if ($genre == "male") {
                 $genre = "Monsieur";
             } else {
@@ -47,4 +44,4 @@ if (isset($_POST["btn"])) {
         }
     }
 }
-header("Location: ../../login.php");
+header("Location: ../../register.php");
