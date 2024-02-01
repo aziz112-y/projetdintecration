@@ -1,6 +1,6 @@
 <?php
-require_once("../../crud/crud_account.php");
-require_once("../../crud/crud_societe.php");
+require_once("../../CRUD/Crud_account.php");
+require_once("../../CRUD/crud_societe.php");
 session_start();
 $crud = new CRUD();
 $soc = new Societe();

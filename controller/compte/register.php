@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once '../../crud/Crud_account.php';
-require_once '../../crud/crud_code.php';
+require_once '../../CRUD/Crud_account.php';
+require_once '../../CRUD/crud_code.php';
 
 $_SESSION["error"] = "";
 $_SESSION["error-type"] = "";

@@ -1,5 +1,5 @@
 <?php
-require_once '../../crud/Crud_account.php';
+require_once '../../CRUD/Crud_account.php';
 $crud = new CRUD();
 $comptes = $crud->listerNonVerif();
 json_encode($comptes);
