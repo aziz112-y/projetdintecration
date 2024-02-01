@@ -22,7 +22,7 @@ if (isset($_SESSION["email"])) {
   <link rel="stylesheet" href="assets/css/my-task.style.min.css" />
 </head>
 
-<body data-mytask="theme-indigo">
+<body onload="loadreclamationx();loadreclamation()" data-mytask="theme-indigo">
   <div id="mytask-layout">
     <!--header nav-->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
@@ -101,7 +101,7 @@ if (isset($_SESSION["email"])) {
                 </ul>
               </li>
               <li class="collapsed">
-                <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
+                <a class="m-link " data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i class="icofont-user-male"></i> <span>Gestion Comptes</span>
                   <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                 <!-- Menu: Sub menu ul -->
                 <ul class="sub-menu collapse" id="client-Components">
@@ -178,7 +178,7 @@ if (isset($_SESSION["email"])) {
                   <div class="card-body">
                   <div class="flex-grow-1" id="reclamation">
                         
-                        </div>
+                   </div>
                   </div>
                     <a class="card-footer text-center border-top-0" href="tickets.php">
                       Voir Tout les Reclamations</a>
@@ -358,7 +358,7 @@ if (isset($_SESSION["email"])) {
                       <h6 class="mb-0 fw-bold">Dernière Réclamation</h6>
                     </div>
                     <div class="card-body">
-                      <div class="flex-grow-1" id="reclamation">
+                      <div class="flex-grow-1" id="reclamationx">
                         
                       </div>
                     </div>
@@ -628,6 +628,15 @@ if (isset($_SESSION["email"])) {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function() {
         document.getElementById("reclamation").innerHTML = this.responseText;
+
+      }
+      xhttp.open("GET", "controller/dashboard/topreclamation.php", true);
+      xhttp.send();
+    }
+    function loadreclamationx() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("reclamationx").innerHTML = this.responseText;
 
       }
       xhttp.open("GET", "controller/dashboard/topreclamation.php", true);

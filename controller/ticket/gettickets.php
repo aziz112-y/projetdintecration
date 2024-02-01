@@ -97,9 +97,6 @@ if ($_SESSION["type"] == "client") {
           }
         }
       }
-      if($_SESSION["type"]=="supervisor"){
-        echo "<td><a href='controller/ticket/supprimer.php?id=" . $row[0] . "'><button class='btn btn-danger text-white'>Supprimer</button></a></td>";
-      }
       echo "</tr>";
     }
   }

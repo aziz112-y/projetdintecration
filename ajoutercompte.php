@@ -24,7 +24,7 @@ if (isset($_SESSION["email"])) {
   <link rel="stylesheet" href="assets/css/my-task.style.min.css" />
 </head>
 
-<body data-mytask="theme-indigo">
+<body onload="loadreclamation()" data-mytask="theme-indigo">
   <div id="mytask-layout">
     <!--header nav-->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
@@ -292,23 +292,6 @@ if (isset($_SESSION["email"])) {
         <div class="card-body">
           <form class="profile-form" method="post" action="controller/compte/register.php">
             <div class="card-body ">
-
-              <div class="mb-3 text-center">
-                <label class="form-label required">Type de Compte</label>
-              </div>
-
-
-              <div class="mb-3 d-flex justify-content-center">
-                <div class="form-check form-check-inline mx-2">
-                  <input class="form-check-input" type="radio" name="userType" id="adminRadio" value="admin" checked>
-                  <label class="form-check-label" for="adminRadio">Admin</label>
-                </div>
-                <div class="form-check form-check-inline mx-2">
-                  <input class="form-check-input" type="radio" name="userType" id="clientRadio" value="client">
-                  <label class="form-check-label" for="clientRadio">Client</label>
-                </div>
-              </div>
-
               <div class="row">
                 <div class="col-sm-6 mb-3">
                   <label class=" form-label required">Nom</label>
@@ -367,22 +350,9 @@ if (isset($_SESSION["email"])) {
                   <label class=" form-label required">Numéro de téléphone mobile</label>
                   <input type="number" name="tel" class="form-control" placeholder="212-999-0000" required>
                 </div>
-                <div class="col-sm-6 mb-3" id="adminInput" style="display: none;">
+                <div class="col-sm-6 mb-3" id="adminInput">
                   <label class="form-label required">Matricule</label>
                   <input type="text" name="mat" class="form-control" placeholder="Entrer Votre Matricule">
-                </div>
-                <div class="col-sm-6 mb-3" id="clientInput" style="display: none;">
-                  <label class="form-label required"> Centre</label>
-                  <input type="text" name="noms" class="form-control" placeholder="" required>
-
-                  <div class="col-sm-6 mb-3">
-                    <label class="form-label required">Numéro de téléphone </label>
-                    <input type="number" name="nums" class="form-control" placeholder="212-999-0000" required>
-                  </div>
-                  <div class="col-sm-6 mb-3">
-                    <label class="form-label required">Adresse</label>
-                    <input type="text" name="adresse" class="form-control" placeholder="" required>
-                  </div>
                 </div>
               </div>
             </div>

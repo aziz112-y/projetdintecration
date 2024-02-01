@@ -35,7 +35,7 @@ class CrudTicket
 
     public function getTickets()
     {
-        if ($_SESSION['type'] == 'admin') {
+        if ($_SESSION['type'] != 'client') {
             $req = "SELECT 
     t.ticketId, 
     t.demande, 
@@ -58,7 +58,7 @@ LEFT JOIN
     cloture c ON c.ticket_id = t.ticketId
 WHERE 
     (c.cloture_par = '{$_SESSION['email']}' AND t.Status = 'Cloture') OR (t.Status = 'enCours')
-    order by t.DateHeure  ;";
+    order by t.DateHeure desc  ;";
         } else {
             $req = "SELECT 
     t.ticketId, 
@@ -80,7 +80,7 @@ JOIN
     societe s ON s.id = a.centre
 LEFT JOIN
     cloture c ON c.ticket_id = t.ticketId;
-    order by t.ticketId desc ;";
+    order by t.ticketId ;";
         }
         $stmt = $this->pdo->prepare($req);
         $stmt->execute();
@@ -186,7 +186,7 @@ LEFT JOIN
     LEFT JOIN
         cloture c ON c.ticket_id = t.ticketId
  where t.contact='{$contact}'
- order by t.DateHeure 
+ order by t.DateHeure desc
  
  ;";
 
