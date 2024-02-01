@@ -1,6 +1,6 @@
 <?php
 require_once '../../model/ticket.php';
-require_once '../../CRUD/crudtickets.php';
+require_once '../../CRUD/crudTickets.php';
 $crudtickets = new CrudTicket();
 $ticket = new Ticket();
 if (isset($_POST['envoyer'])) {
